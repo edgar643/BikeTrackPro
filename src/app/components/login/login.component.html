@@ -1,0 +1,39 @@
+<body>
+
+    <div class=" card card-login mx-auto mt-3 col-sm-12 col-md-8  col-xl-4">
+        <img class="rounded mx-auto d-block img-responsive " alt="Responsive image " src="/assets/Captura.PNG ">
+        <div class="card-header card-header ">Inicio de Sesión</div>
+        <div class="card-body " routerLinkActive="active ">
+            <form>
+                <div class="form-group ">
+                    <div class="form-label-group ">
+                        <input type="text " name="idUsuario " class="form-control " placeholder="Ingreso su Id de Usuario " required="required " autofocus="autofocus ">
+                        <label for="inputEmail ">Usuario</label>
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="form-label-group ">
+                        <input type="password " name="clave " class="form-control " placeholder="Contraseña " required="required ">
+                        <label for="inputPassword ">Contraseña</label>
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="checkbox ">
+                        <label>
+                                    <input type="checkbox" value="remember-me ">
+                                    Recordar Contraseña
+                                </label>
+                    </div>
+                </div>
+                <button class="btn btn-dark btn-block " [routerLink]="[ '/home'] " name=" enviar ">Ingresar</button>
+            </form>
+            <div class="text-center ">
+                <a class="d-block small mt-3 " href="register.html ">Registrarse</a>
+                <a class="d-block small " href="forgot-password.html ">Olvido contraseña?</a>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
