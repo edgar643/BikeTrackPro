@@ -1,1 +1,105 @@
-<p>bicycles works!</p>
+
+<body>
+    <div class="overflow-auto">
+        <div id="exampleModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark">
+                        <h5 class="modal-title text-success">Visualizar</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-row form">
+                                <div class="form-group col-md-4">
+                                    <label for="">id</label>
+                                    <input type="text" readonly class="form-control" value="" placeholder="DNI">
+                                    <input hidden="true" readonly type="text" readonly class="form-control" value=""
+                                        #idlistado>
+                                </div>
+                                <div class="form-group-sm col-md-4">
+                                    <label for="lista">Marca</label>
+                                    <input type="text" readonly autofocus="true" class="form-control" value
+                                        placeholder="" #nombrelistado>
+                                </div>
+                                <div class="form-group-sm col-md-4">
+                                    <label for="list">Color</label>
+                                    <input type="text" readonly autofocus="true" class="form-control" value
+                                        placeholder="Fecha Creacion" #nombrelistado>
+                                </div>
+                            </div></form>
+                    </div>
+                    <div class="modal-footer">
+                        <button hidden="true" type="button" class="btn btn-outline-dark">Guardar</button>
+                        <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Ocultar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="container-fluid">
+            <div class="container-fluid">
+                <ol class="breadcrumb mt-2">
+                    <li class="breadcrumb-item">
+                        <a href="#">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active">Bicycles</li>
+                </ol>
+                <div class="row">
+                    <div class="container-fluid">
+                        <div class="card animated fadeIn fast">
+                            <div class="card-header">
+                                <h5 class="text-md-left">Bicycles</h5>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-sm table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th hidden="true" class="text-md-center">ID</th>
+                                            <th class="text-md-center">Id</th>
+                                            <th class="text-md-left">Brand</th>
+                                            <th>Type</th>
+                                            <th>Color</th>
+                                            <th class="text-md-center"></th>
+                                            <th WIDTH="0%"> </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr>
+                                            <td hidden="true" class="text-md-center"></td>
+                                            <td class="text-md-center"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="text-md-left"></td>
+                                            <td class="text-md-left"></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-tools">
+
+                                <ul class="pagination pagination-sm float-sm-left ml-1">
+                                    <li class="page-item"><a class="page-link text-dark" href="#">&laquo;</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">&raquo;</a></li>
+                                </ul>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
