@@ -1,31 +1,34 @@
 <body>
-
-    <div class=" card card-login mx-auto mt-3 col-sm-12 col-md-8  col-xl-4">
-        <img class="rounded mx-auto d-block img-responsive " alt="Responsive image " src="/assets/Captura.PNG ">
+    <div class="container">
+        <div class="card card-login mx-auto mt-5 col-sm-12 col-md-8 col-xl-3">
         <div class="card-header card-header ">Inicio de Sesión</div>
         <div class="card-body " routerLinkActive="active ">
+
+            <img src="/assets/portada.jpg" alt="Imagen de la derecha" class="mt-2 mb-4">
             <form>
                 <div class="form-group ">
                     <div class="form-label-group ">
-                        <input type="text " name="idUsuario " class="form-control " placeholder="Ingreso su Id de Usuario " required="required " autofocus="autofocus ">
+                        <input type="text " name="idUsuario " class="form-control "
+                            placeholder="Ingreso Usuario " required="required " autofocus="autofocus "  #userName>
                         <label for="inputEmail ">Usuario</label>
                     </div>
                 </div>
                 <div class="form-group ">
                     <div class="form-label-group ">
-                        <input type="password " name="clave " class="form-control " placeholder="Contraseña " required="required ">
+                        <input type="password " name="clave " class="form-control " placeholder="Contraseña"  
+                            required="required " #password>
                         <label for="inputPassword ">Contraseña</label>
                     </div>
                 </div>
                 <div class="form-group ">
                     <div class="checkbox ">
                         <label>
-                                    <input type="checkbox" value="remember-me ">
-                                    Recordar Contraseña
-                                </label>
+                            <input type="checkbox" value="remember-me ">
+                            Recordar Contraseña
+                        </label>
                     </div>
                 </div>
-                <button class="btn btn-dark btn-block " [routerLink]="[ '/home'] " name=" enviar ">Ingresar</button>
+                <button type="button" class="btn btn-dark btn-block mt-1" [routerLink]="[ '/home'] " (click)=auhtenticate(userName.value,password.value) name=" enviar ">Ingresar</button>
             </form>
             <div class="text-center ">
                 <a class="d-block small mt-3 " href="register.html ">Registrarse</a>
@@ -33,7 +36,5 @@
             </div>
         </div>
     </div>
-
-
-
+</div>  
 </body>

@@ -6,14 +6,15 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./bicycles.component.css']
 })
 export class BicyclesComponent {
-  private listBicycles: any[] = [];
+  private urlHost = 'http://localhost:3000/';
+  public listBicycles: any[] = [];
   constructor(private http: HttpClient) {
     console.log("Servicio Listo para consumir");
     this.getAll();
   }
 
   private getAll() {
-    this.http.get('localhost:3000/bicycle/').subscribe((listado: any) => {
+    this.http.get(this.urlHost + 'bicycle/').subscribe((listado: any) => {
       this.listBicycles = listado;
       console.log("All Bicycles");
       console.log(this.listBicycles);

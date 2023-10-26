@@ -1,0 +1,11 @@
+.container {
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: start; /* Centrar verticalmente */
+    height: 100vh; /* Establecer la altura al 100% de la ventana */
+  } 
+
+  .card-container {
+    margin-top: 250px; /* Ajusta el margen superior según tus necesidades */
+    /* Opcional: Ajusta el margen inferior, izquierdo y derecho si es necesario */
+  }
