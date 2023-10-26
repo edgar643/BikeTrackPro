@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { BicyclesComponent } from './components/bicycles/bicycles.component';
+import { EventsComponent } from './components/events/events.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,10 +16,12 @@ import { BicyclesComponent } from './components/bicycles/bicycles.component';
     HeaderComponent,
     FooterComponent,
     BicyclesComponent,
+    EventsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     APP_ROUTING
   ],
   providers: [],
