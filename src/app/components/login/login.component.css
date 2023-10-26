@@ -3,9 +3,69 @@
     justify-content: center; /* Centrar horizontalmente */
     align-items: start; /* Centrar verticalmente */
     height: 100vh; /* Establecer la altura al 100% de la ventana */
-  } 
+  }
 
   .card-container {
     margin-top: 250px; /* Ajusta el margen superior según tus necesidades */
     /* Opcional: Ajusta el margen inferior, izquierdo y derecho si es necesario */
   }
+.fblogin {
+  background-color:#3b5898;
+}
+.fblogin:hover {
+  background-color:#5177c2;
+}
+.fblogin:active {
+  position:relative;
+  top:1px;
+}
+.gplogin {
+  background-color:#dd4c39;
+}
+.gplogin:hover {
+  background-color:#f06e60;
+}
+.gplogin:active {
+  position:relative;
+  top:1px;
+}
+.twlogin {
+  background-color:#00abee;
+}
+.twlogin:hover {
+  background-color:#4cbde6;
+}
+.twlogin:active {
+  position:relative;
+  top:1px;
+}
+
+.social{
+  transition: background 200ms ease-in-out 0s;
+  -webkit-transition: background 200ms ease-in-out 0s;
+  -moz-transition: background 200ms ease-in-out 0s;
+  -o-transition: background 200ms ease-in-out 0s;
+  -ms-transition: background 200ms ease-in-out 0s;
+
+  margin-top: 12px;
+  -webkit-border-top-left-radius:1px;
+  -moz-border-radius-topleft:1px;
+  border-top-left-radius:1px;
+  -webkit-border-top-right-radius:1px;
+  -moz-border-radius-topright:1px;
+  border-top-right-radius:1px;
+  -webkit-border-bottom-right-radius:1px;
+  -moz-border-radius-bottomright:1px;
+  border-bottom-right-radius:1px;
+  -webkit-border-bottom-left-radius:1px;
+  -moz-border-radius-bottomleft:1px;
+  border-bottom-left-radius:1px;
+  text-indent:0;
+  display:block;
+  color:#ffffff;
+  height:50px;
+  line-height:50px;
+  width: 100%;
+  text-decoration:none;
+  text-align:center;
+}
