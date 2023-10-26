@@ -20,12 +20,12 @@
                                         #idlistado>
                                 </div>
                                 <div class="form-group-sm col-md-4">
-                                    <label for="lista">Marca</label>
+                                    <label for="">Marca</label>
                                     <input type="text" readonly autofocus="true" class="form-control" value
                                         placeholder="" #nombrelistado>
                                 </div>
                                 <div class="form-group-sm col-md-4">
-                                    <label for="list">Color</label>
+                                    <label for="">Color</label>
                                     <input type="text" readonly autofocus="true" class="form-control" value
                                         placeholder="Fecha Creacion" #nombrelistado>
                                 </div>
@@ -68,15 +68,25 @@
                                     </thead>
                                     <tbody>
 
-                                        <tr>
-                                            <td hidden="true" class="text-md-center"></td>
-                                            <td class="text-md-center"></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td class="text-md-left"></td>
-                                            <td class="text-md-left"></td>
-                                            <td></td>
+                                        <tr *ngFor="let bicycle of listBicycles">
+                                            <td hidden="true" class="text-md-center">{{bicycle.id}}</td>
+                                            <td class="text-md-center">{{bicycle.id}}</td>
+                                            <td class="text-md-left">{{bicycle.brand}}</td>
+                                            <td class="text-md-left">{{bicycle.type}}</td>
+                                            <td class="text-md-left">{{bicycle.color}}</td>
+                                            <td class="text-md-center">
+                                                <div class="dropdown">
+                                                    <button class="btn btn-sm btn-outline-dark btn-group-sm " type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fa fa-bars"></i>
+                                            </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                                        <button class="dropdown-item" type="button" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-edit"> </i> Ver Detalle</button>
+                                                        <button hidden="true" class="dropdown-item" type="button"> <i class="fa fa-trash"></i> Eliminar</button>
+
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="text-md-center col-md-4">
                                         </tr>
                                     </tbody>
                                 </table>
