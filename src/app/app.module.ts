@@ -1,4 +1,4 @@
-import { APP_ROUTING } from './app.routes';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HeaderComponent } from './components/header/header.component';
@@ -21,9 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    APP_ROUTING
-  ],
+    HttpClientModule],
   providers: [],
   bootstrap: [AppComponent]
 })
