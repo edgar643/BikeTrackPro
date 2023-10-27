@@ -1,0 +1,462 @@
+<body>
+    <div class="overflow-auto">
+
+        <div id="ModalResumen" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark">
+                        <h5 class="modal-title text-success"><img src="assets\route.svg" width="30" height="30" alt=""> RUTERO</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card animated fadeIn fast">
+                            <div class="card-header">
+                                <h5 class="text-md-left">RESUMEN RUTERO VENDEDOR:{{ nombreVendedor}}</h5>
+                            </div>
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-sm table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th hidden="true" class="text-md-center">Dias</th>
+                                            <th class="text-md-center">Dias</th>
+                                            <th class="text-md-center">Lun</th>
+                                            <th class="text-md-center">Mar</th>
+                                            <th class="text-md-center">Mie</th>
+                                            <th class="text-md-center">Jue</th>
+                                            <th class="text-md-center">Vie</th>
+                                            <th class="text-md-center">Sab</th>
+                                            <th class="text-md-center">Dom</th>
+
+                                            <th WIDTH="10%"> </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr *ngFor="let marca of marcas">
+                                            <td hidden="true" class="text-md-center">{{marca.id}}</td>
+                                            <td class="text-md-center">{{marca.codigo}}</td>
+                                            <td>{{marca.descripcion}}</td>
+                                            <td class="text-md-center">
+                                                <div class="dropdown">
+                                                    <button class="btn btn-sm btn-outline-dark btn-group-sm " type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                              <i class="fa fa-bars"></i>
+                                      </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                                        <button class="dropdown-item" type="button" (click)="getOne(marca.id)"><i class="fa fa-edit"> </i> Ver Ruta Vendedor</button>
+                                                        <button hidden="true" class="dropdown-item" type="button"> <i class="fa fa-trash"></i> Eliminar</button>
+
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="text-md-center">Semana 1</td>
+                                            <td class="text-md-center">L1 28</td>
+                                            <td class="text-md-center">M1 25</td>
+                                            <td class="text-md-center">MI1 15</td>
+                                            <td class="text-md-center">J1 10</td>
+                                            <td class="text-md-center">V1 19</td>
+                                            <td class="text-md-center">S1 17</td>
+                                            <td class="text-md-center">D1 18</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-md-center">Semana 2</td>
+                                            <td class="text-md-center">L2 28</td>
+                                            <td class="text-md-center">M2 25</td>
+                                            <td class="text-md-center">MI2 15</td>
+                                            <td class="text-md-center">J2 10</td>
+                                            <td class="text-md-center">V2 19</td>
+                                            <td class="text-md-center">S2 17</td>
+                                            <td class="text-md-center">D2 18</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-md-center">Semana 3</td>
+                                            <td class="text-md-center">L3 28</td>
+                                            <td class="text-md-center">M3 25</td>
+                                            <td class="text-md-center">MI3 15</td>
+                                            <td class="text-md-center">J3 10</td>
+                                            <td class="text-md-center">V3 19</td>
+                                            <td class="text-md-center">S3 17</td>
+                                            <td class="text-md-center">D3 18</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-md-center">Semana 4</td>
+                                            <td class="text-md-center">L4 28</td>
+                                            <td class="text-md-center">M4 25</td>
+                                            <td class="text-md-center">MI4 15</td>
+                                            <td class="text-md-center">J4 10</td>
+                                            <td class="text-md-center">V4 19</td>
+                                            <td class="text-md-center">S4 17</td>
+                                            <td class="text-md-center">D4 18</td>
+                                            <td></td>
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--div class="card-tools">
+
+                                <ul class="pagination pagination-sm float-sm-left ml-1">
+                                    <li class="page-item"><a class="page-link text-dark" href="#">&laquo;</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">&raquo;</a></li>
+                                </ul>
+                            </div-->
+                            <!-- /.card-body -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="container-fluid">
+            <div class="container-fluid">
+                <ol class="breadcrumb mt-2">
+                    <li class="breadcrumb-item">
+                        <a href="#">Rutero</a>
+                    </li>
+                    <li class="breadcrumb-item active">Rutas Programadas</li>
+                </ol>
+
+                <div class="row">
+                    <div class="container-fluid" *ngIf="mostrarListadoPrincipal">
+                        <div class="card animated fadeIn fast">
+                            <div class="card-header">
+                                <h5 class="text-md-left"> <i class="fa fa-user-circle fa-fw"></i> SELECCIONA VENDEDOR</h5>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-sm table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th hidden="true" class="text-md-center">ID</th>
+                                            <th class="text-md-center">Id</th>
+                                            <th class="text-md-center">Código</th>
+                                            <th class="text-md-left">Vendedor</th>
+                                            <th class="text-md-left">Celular</th>
+                                            <th class="text-md-right">Clientes Activos</th>
+                                            <th class="text-md-right">Clientes Inactivos</th>
+                                            <th class="text-md-right">Total Clientes</th>
+                                            <th class="text-md-right">Total Mes</th>
+                                            <th class="text-md-right">Alias</th>
+                                            <th class="text-md-center">Acción</th>
+                                            <th WIDTH="10%"> </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+
+                                        <tr *ngFor="let lista of listado">
+                                            <td class="text-md-center">{{lista.id}}</td>
+                                            <td class="text-md-center">{{lista.codigo}}</td>
+                                            <td class="text-md-left">{{lista.nombre| titlecase}}</td>
+                                            <td class="text-md-left">{{lista.celular| titlecase}}</td>
+                                            <td class="text-md-right">{{lista.clientesActivos| titlecase}}</td>
+                                            <td class="text-md-right">{{lista.clientesIncativos| titlecase}}</td>
+                                            <td class="text-md-right">{{lista.totalClientes| titlecase}}</td>
+                                            <td class="text-md-right">{{lista.visitasMes| titlecase}}</td>
+                                            <td class="text-md-right">{{lista.alias}}</td>
+
+                                            <td class="text-md-center">
+                                                <div class="dropdown">
+                                                    <button class="btn btn-sm btn-outline-dark btn-group-sm " type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="fa fa-bars"></i>
+                                        </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                                        <button class="dropdown-item" type="button" (click)="getClientsByVendedor(lista.id)"><i class="fa fa-edit"> </i> Ver Ruta Vendedor</button>
+                                                        <button hidden="true" class="dropdown-item" type="button"> <i class="fa fa-trash"></i> Eliminar</button>
+
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+
+                                        <tr>
+                                            <th class="text-md-center"> </th>
+                                            <th class="text-md-right"></th>
+                                            <th class="text-md-right"></th>
+                                            <th class="text-md-right">Total</th>
+                                            <th class="text-md-right">0</th>
+                                            <th class="text-md-right">0</th>
+                                            <th class="text-md-right">0</th>
+                                            <th class="text-md-right">0</th>
+                                            <th class="text-md-right"></th>
+                                            <th class="text-md-center"></th>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-tools">
+
+                                <ul class="pagination pagination-sm float-sm-left ml-1">
+                                    <li class="page-item"><a class="page-link text-dark" href="#">&laquo;</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">&raquo;</a></li>
+                                </ul>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <div class="container-fluid" *ngIf="!mostrarListadoPrincipal">
+                        <div class="card animated fadeIn fast">
+                            <div class="card-header">
+
+                                <div class="dropdown">
+                                    <button (click)="volver()" class="btn btn-sm btn-outline-dark btn-group-sm " type="button">
+                                    <i class="fa fa-arrow-circle-left" ></i>
+                                      </button>
+                                    <button class="btn btn-sm btn-outline-dark btn-group-sm " type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      <i class="fa fa-user-circle fa-fw"></i> VENDEDOR: {{nombreVendedor| titlecase}}
+                      </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <!--button class="dropdown-item" type="button" data-toggle="modal" data-target="#ModalResumen"><i class="fa fa-edit"> </i> Ver Resumen Mensual</button-->
+                                        <div class="col-12 col-sm-12 col-md-12 d-flex align-items-stretch">
+                                            <div class="card bg-light">
+                                                <div class="card-header text-muted border-bottom-0">
+                                                    Vendedor
+                                                </div>
+                                                <div class="card-body pt-0">
+                                                    <div class="row">
+                                                        <div>
+                                                            <h2 class="lead"><b> {{nombreVendedor| titlecase}}</b></h2>
+                                                            <!--p class="text-muted text-sm"><b>About: </b> Web Designer / UX / Graphic Artist / Coffee Lover </p-->
+                                                            <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                                <li class="small"><span class="fa-li"><i class="fa fa-lg fa-building"></i></span>Dirección: CALLE 13 # 21-74</li>
+                                                                <li class="small"><span class="fa-li"><i class="fa fa-lg fa-phone"></i></span> Télefono #: + 839.43.43</li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="col-md-4 col-sm-5 text-center">
+                                                            <img src="src\assets\usuario.jpg" alt="" class="img-circle img-fluid">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <div class="text-right">
+                                                        <!--a href="#" class="btn btn-sm btn-success">
+                                                            <i class="fa fa-comments"></i>
+                                                        </a-->
+                                                        <a href="#" data-toggle="modal" data-target="#ModalResumen" class="btn btn-sm btn-outline-dark">
+                                                            <i class="fa fa-calendar"></i> Resumen Mensual
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-sm table-hover border-1">
+                                    <thead>
+                                        <tr>
+                                            <th hidden="true" class="text-md-center">ID</th>
+                                            <th class="text-md-center">N</th>
+                                            <th class="text-md-center">Nit</th>
+                                            <th class="text-md-left ">Cliente</th>
+                                            <th class="text-md-left ">Razon Social</th>
+                                            <th class="text-md-left ">Canal</th>
+                                            <th class="text-md-left">Población</th>
+                                            <!--th class="text-md-left">Barrio</th-->
+                                            <th class="text-md-left">Celular</th>
+                                            <th class="text-md-left">Direccion</th>
+                                            <!--th class="text-md-left">Visita</th-->
+                                            <!--th class="text-md-left">Estado</th-->
+                                            <!--th class="text-md-center">Georef.</th-->
+                                            <th class="text-md-center">Acción</th>
+                                            <th WIDTH="3%"> </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let cliente of listadoClientes">
+                                            <td class="text-md-center">{{cliente.id}}</td>
+                                            <td class="text-md-center">{{cliente.idPersona| titlecase}}</td>
+                                            <td class="text-md-left">{{cliente.nombrePersona| titlecase}}</td>
+                                            <td class="text-md-left">{{cliente.razonSocial| titlecase}}</td>
+                                            <td class="text-md-left">{{cliente.canal| titlecase}}</td>
+                                            <td class="text-md-left">{{cliente.ciudad| titlecase}}</td>
+                                            <!--td class="text-md-left">{{cliente.barrio}}</td-->
+                                            <td class="text-md-left">{{cliente.telefono}}</td>
+                                            <td class="text-md-left">{{cliente.direccion| titlecase}}</td>
+                                            <!--td class="text-md-left">{{cliente.tipoPeriodo| titlecase}} </td-->
+                                            <!--td>{{cliente.estado}}</td-->
+                                            <!--td class="text-md-center">{{cliente.georeferenciacion}}</td-->
+                                            <td class="text-md-center">
+                                                <div class="dropdown">
+                                                    <button class="btn btn-sm btn-outline-dark btn-group-sm " type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fa fa-bars"></i>
+                                        </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                                        <button class="dropdown-item" type="button" data-toggle="modal" data-target="#exampleModal" (click)="getRutaCliente(cliente.id)"><i class="fa fa-edit"> </i> Modificar Ruta</button>
+                                                        <button hidden="true" class="dropdown-item" type="button"> <i class="fa fa-trash"></i> Eliminar</button>
+                                                        <button hidden="true" class="dropdown-item" type="button"> <i class="fa fa-arrow-up"></i> Subir </button>
+                                                        <button hidden="true" class="dropdown-item" type="button"> <i class="fa fa-arrow-down"></i> Bajar </button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-tools">
+
+                                <ul class="pagination pagination-sm float-sm-left ml-1">
+                                    <li class="page-item"><a class="page-link text-dark" href="#">&laquo;</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">&raquo;</a></li>
+                                </ul>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="exampleModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-dark">
+                    <h5 class="modal-title text-success"><img src="assets\route.svg" width="30" height="30" alt=""> Programar Rutero</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-row form">
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label for="frecuencia">Cliente:</label>
+                                <input type="text" readonly class="form-control text-left" value={{rutaCliente.nombreCliente}} placeholder="Cliente">
+                            </div>
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label for="frecuencia">Razon Social:</label>
+                                <input type="text" readonly class="form-control text-left" value={{rutaCliente.razonSocial}} placeholder="Razon Social">
+                            </div>
+
+                        </div>
+                        <div class="form-row form">
+                            <div class="form-group col-md-3 col-sm-12">
+                                <label for="frecuencia">Canal:</label>
+                                <input type="text" readonly class="form-control text-left" value={{rutaCliente.canal}} placeholder="Canal">
+                            </div>
+                            <div class="form-group col-md-3 col-sm-6">
+                                <label for="frecuencia">Población:</label>
+                                <input type="text" readonly class="form-control text-left" value={{rutaCliente.poblacion}} placeholder="Población">
+                            </div>
+                            <div class="form-group col-md-3 col-sm-6">
+                                <label for="frecuencia">Barrio</label>
+                                <input type="text" readonly class="form-control text-left" value={{rutaCliente.barrio}} placeholder="Barrio">
+                            </div>
+                            <div class="form-group col-md-3 col-sm-12">
+                                <label for="frecuencia">Estado:</label>
+                                <input type="text" readonly class="form-control text-left" value={{rutaCliente.estado}} placeholder="Estado">
+                            </div>
+
+                        </div>
+                        <div class="form-row form">
+
+                            <div class="form-group col-md-6 col-sm-8">
+                                <label>Frecuencia Visita:</label>
+                                <select value={{rutaCliente.idFrecuencia}} class="form-control custom-select col-md-12 col-sm-12" id="selectUnidad">
+                                <option *ngFor="let frecuencia of listadoFrecuencias" value="{{frecuencia.id}}">{{frecuencia.descripcion}}</option>
+
+                            </select>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-row form bg-light">
+                            <label class="mt-1"><i class="fa fa-calendar-check-o"></i></label>
+                            <div class="form-group col-md-8 col-sm-12">
+                                <div class="form-check form-check-inline">
+                                    <div class="custom-control custom-checkbox m-1">
+                                        <input *ngIf="dameDias(dias,0)" class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1" checked>
+                                        <input *ngIf="!dameDias(dias,0)" class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
+                                        <label for="customCheckbox1" class="custom-control-label">L</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox m-1">
+                                        <input *ngIf="dameDias(dias,1)" class="custom-control-input" type="checkbox" id="customCheckbox2" value="option2" checked>
+                                        <input *ngIf="!dameDias(dias,1)" class="custom-control-input" type="checkbox" id="customCheckbox2" value="option2">
+                                        <label for="customCheckbox2" class="custom-control-label">M</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox m-1">
+                                        <input *ngIf="dameDias(dias,2)" class="custom-control-input" type="checkbox" id="customCheckbox3" value="option3" checked>
+                                        <input *ngIf="!dameDias(dias,2)" class="custom-control-input" type="checkbox" id="customCheckbox3" value="option3">
+                                        <label for="customCheckbox3" class="custom-control-label">Mi</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox m-1">
+                                        <input *ngIf="dameDias(dias,3)" class="custom-control-input" type="checkbox" id="customCheckbox4" value="option4" checked>
+                                        <input *ngIf="!dameDias(dias,3)" class="custom-control-input" type="checkbox" id="customCheckbox4" value="option4">
+                                        <label for="customCheckbox4" class="custom-control-label">J</label>
+
+                                    </div>
+                                    <div class="custom-control custom-checkbox m-1">
+
+                                        <input *ngIf="dameDias(dias,4)" class="custom-control-input" type="checkbox" id="customCheckbox5" value="option5" checked>
+                                        <input *ngIf="!dameDias(dias,4)" class="custom-control-input" type="checkbox" id="customCheckbox5" value="option5">
+                                        <label for="customCheckbox5" class="custom-control-label">V</label>
+
+                                    </div>
+                                    <div class="custom-control custom-checkbox m-1">
+
+                                        <input *ngIf="dameDias(dias,5)" class="custom-control-input" type="checkbox" id="customCheckbox6" value="option6" checked>
+                                        <input *ngIf="!dameDias(dias,5)" class="custom-control-input" type="checkbox" id="customCheckbox6" value="option6">
+                                        <label for="customCheckbox6" class="custom-control-label">S</label>
+
+                                    </div>
+                                    <div class="custom-control custom-checkbox m-1">
+
+                                        <input *ngIf="dameDias(dias,6)" class="custom-control-input" type="checkbox" id="customCheckbox7" value="option7" checked>
+                                        <input *ngIf="!dameDias(dias,6)" class="custom-control-input" type="checkbox" id="customCheckbox7" value="option7">
+                                        <label for="customCheckbox7" class="custom-control-label">D</label>
+
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal" (click)=updateOne(nombreMarca.value,idMarca.value)>Guardar</button>
+                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

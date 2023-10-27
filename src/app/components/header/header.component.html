@@ -1,4 +1,4 @@
-<nav   class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -6,27 +6,34 @@
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-        <h5 class="h5-especial">BikeTrackPro</h5></a>
+        <h5 class="h5-especial">BikeTrackPro</h5>
+    </a>
+        
     <!--link rel="stylesheet" href="src\app\components\login\font-awesome.min.css"-->
-    <div  class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link text-light" [routerLink]="['bicycles']"> <img src="assets\home.svg" width="30" height="30" alt="">Bicycles <span class="sr-only">(current)</span></a>
+                <a class="nav-link text-light" [routerLink]="['bicycles']"> <img src="assets\home.svg" width="30"
+                        height="30" alt="">Bicycles <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link text-light" [routerLink]="['events']"> <img src="assets\route.svg" width="30" height="30" alt="">Events <span class="sr-only">(current)</span></a>
+                <a class="nav-link text-light" [routerLink]="['events']"> <img src="assets\award.svg" width="30"
+                        height="30" alt="">Events <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link text-light" [routerLink]="['']"> <img src="assets\route.svg" width="30" height="30" alt="">Routes <span class="sr-only">(current)</span></a>
+                <a class="nav-link text-light" [routerLink]="['']"> <img src="assets\route.svg" width="30" height="30"
+                        alt="">Routes <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" [routerLink]="['']"> <img src="assets\reserve.png" width="30" height="30" alt="">Reservas</a>
+                <a class="nav-link text-light" [routerLink]="['']"> <img src="assets\reserve.png" width="30" height="30"
+                        alt="">Rent</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" [routerLink]="['']"> <img src="assets\reserve.png" width="30" height="30" alt="">Ride Maps</a>
+                <a class="nav-link text-light" [routerLink]="['']"> <img src="assets\map.svg" width="30" height="30"
+                        alt="">Ride Maps</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light"  [routerLink]="['login']" > <img src="assets\power-off.svg" width="30" height="30" alt=""> Salir</a>
+                <a class="nav-link text-light" data-toggle="modal" data-target="#logoutModal"  href=""> <img src="assets\power-off.svg" width="30" height="30" alt=""> Log Out</a>
             </li>
         </ul>
         <form hidden="true" class="form-inline my-2 my-lg-0">
@@ -49,7 +56,7 @@
             <div class="modal-body">Seleccione salir para cerrar sesion</div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-dark">Cancelar</button>
-                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Salir</button>
+                <button type="button" class="btn btn-outline-danger" [routerLink]="['login']" data-dismiss="modal">Salir</button>
             </div>
         </div>
     </div>
