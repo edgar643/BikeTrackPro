@@ -1,3 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
 /* styles.css */
 @import "~bootstrap/dist/css/bootstrap.min.css";
+@import url("https://unpkg.com/leaflet@1.9.4/dist/leaflet.css");

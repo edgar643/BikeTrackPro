@@ -2,7 +2,7 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-    <a class="navbar-brand text-info" href="#">
+    <a class="navbar-brand text-info" href="/bicycles">
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -23,10 +23,13 @@
                 <a class="nav-link text-light" [routerLink]="['']"> <img src="assets\reserve.png" width="30" height="30" alt="">Reservas</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" [routerLink]="['']"> <img src="assets\reserve.png" width="30" height="30" alt="">Ride Maps</a>
+                <a class="nav-link text-light" [routerLink]="['map']"> <img src="assets\reserve.png" width="30" height="30" alt="">Ride Maps</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link text-light"  [routerLink]="['login']" > <img src="assets\power-off.svg" width="30" height="30" alt=""> Salir</a>
+            </li> -->
+            <li class="nav-item">
+                <a class="nav-link text-light" style="cursor: pointer;" (click)="openModal(template)"> <img src="assets\power-off.svg" width="30" height="30" alt=""> Log Out</a>
             </li>
         </ul>
         <form hidden="true" class="form-inline my-2 my-lg-0">
@@ -37,7 +40,22 @@
 </nav>
 
 <!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">¿Desea salir?</h4>
+        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+          <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="modal-body">Seleccione salir para cerrar sesion</div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modalRef?.hide()">Cancelar</button>
+            <button type="button" class="btn btn-outline-danger" (click)="closeSesion()">Salir</button>
+        </div>
+    </div>
+</ng-template>
+<!-- <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header btn-dark">
@@ -53,4 +71,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
