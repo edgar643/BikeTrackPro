@@ -6,3 +6,6 @@ footer {
     bottom: 0px;
     width: 100%;
 }
+/* styles.css */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import url("https://unpkg.com/leaflet@1.9.4/dist/leaflet.css");

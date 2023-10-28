@@ -1,7 +1,7 @@
 .container {
     display: flex;
     justify-content: center; /* Centrar horizontalmente */
-    align-items: start; /* Centrar verticalmente */
+    align-items: flex-start; /* Centrar verticalmente */
     height: 100vh; /* Establecer la altura al 100% de la ventana */
   }
 
