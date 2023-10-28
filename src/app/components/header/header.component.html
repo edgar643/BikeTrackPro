@@ -29,11 +29,10 @@
                         alt="">Rent</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" [routerLink]="['']"> <img src="assets\map.svg" width="30" height="30"
-                        alt="">Ride Maps</a>
+                <a class="nav-link text-light" [routerLink]="['map']"> <img src="assets\reserve.png" width="30" height="30" alt="">Ride Maps</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" data-toggle="modal" data-target="#logoutModal"  href=""> <img src="assets\power-off.svg" width="30" height="30" alt=""> Log Out</a>
+                <a class="nav-link text-light" data-toggle="modal" data-target="#logoutModal" href=""> <img src="assets\power-off.svg" width="30" height="30" alt=""> Salir</a>
             </li>
         </ul>
         <form hidden="true" class="form-inline my-2 my-lg-0">
@@ -59,20 +58,3 @@
         </div>
     </div>
 </ng-template>
-<!-- <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header btn-dark">
-                <h5 class="modal-title" id="exampleModalLabel">¿Desea salir?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-            </div>
-            <div class="modal-body">Seleccione salir para cerrar sesion</div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark">Cancelar</button>
-                <button type="button" class="btn btn-outline-danger" [routerLink]="['login']" data-dismiss="modal">Salir</button>
-            </div>
-        </div>
-    </div>
-</div>
