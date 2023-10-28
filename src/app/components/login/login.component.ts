@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import {UserDTO} from './userDTO';
-
+import {Component, OnInit} from "@angular/core";
+import {HttpClient} from "@angular/common/http";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,10 +12,8 @@ export class LoginComponent implements OnInit {
 
   private urlHost = 'http://localhost:3000/';
     constructor(private http: HttpClient) {
-      
-  }
 
- 
+  }
 
   public   auhtenticate(nombre: string, password:string) {
     console.log("Autenticar");
@@ -33,5 +30,5 @@ export class LoginComponent implements OnInit {
      password:"",
       role: ""
     }
- 
+
 }
