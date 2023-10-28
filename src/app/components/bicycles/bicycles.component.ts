@@ -1,44 +1,50 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, TemplateRef} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BicycleDTO ,Bicycle} from './bicycleDTO';
-
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 @Component({
     selector: 'app-bicycles',
     templateUrl: './bicycles.component.html',
     styleUrls: ['./bicycles.component.css']
 })
 export class BicyclesComponent {
-    private urlHost = 'http://localhost:3000/bicycle/';
-    public listBicycles: any[] = [];
+  private HOST = 'http://192.168.20.23';
+  private PORT = '3000';
+  private url = this.HOST + ':' + this.PORT + '/v1/bikes/';
+  public listBicycles: any[] = [];
     public bicycle: BicycleDTO = {
         id: 0
         , type: ""
         , brand: ""
         , color: ""
     };
+  modalEditar?: BsModalRef;
+  modalCrear?: BsModalRef;
     public bicycleWitoutId: Bicycle = {
          type: ""
         , brand: ""
         , color: ""
     };
+  openModal(template: TemplateRef<any>) {
+    this.modalEditar = this.modalService.show(template);
+  }
 
-
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private modalService: BsModalService) {
         console.log("Servicio Listo para consumir");
         //this.listBicycles =this.listMock;
         this.getAll();
         //this.listBicycles = this.listMock;
     }
 
-    private getAll() {
-        this.http.get(this.urlHost).subscribe((listado: any) => {
+    private getAll( ) {
+        this.http.get(this.url).subscribe((listado: any) => {
             this.listBicycles = listado;
             console.log("All Bicycles");
             console.log(this.listBicycles);
         });
     }
     public getOne(id: string) {
-        const urlOne = this.urlHost + id;
+        const urlOne = this.url + id;
         this.http.get(urlOne).subscribe((bike: any) => {
             console.log(bike);
             this.bicycle = bike;
@@ -60,7 +66,7 @@ export class BicyclesComponent {
         this.bicycle.brand = brand;
         this.bicycle.color = color;
         console.log(this.bicycle)
-        this.http.put(this.urlHost + this.bicycle.id, this.bicycle).subscribe((response: any) => {
+        this.http.put(this.url + this.bicycle.id, this.bicycle).subscribe((response: any) => {
             console.log("Update");
             console.log(response);
         });
@@ -73,7 +79,7 @@ export class BicyclesComponent {
         this.bicycleWitoutId.brand = brand;
         this.bicycleWitoutId.color = color;
         console.log(this.bicycle)
-        this.http.post(this.urlHost, this.bicycleWitoutId).subscribe((response: any) => {
+        this.http.post(this.url, this.bicycleWitoutId).subscribe((response: any) => {
             console.log("Create");
             console.log(response);
         });
@@ -84,7 +90,7 @@ export class BicyclesComponent {
         console.log("delete")
         const numericId = Number(id);
 
-        this.http.delete(this.urlHost + numericId).subscribe((response: any) => {
+        this.http.delete(this.url + numericId).subscribe((response: any) => {
             console.log("deleteResponse " + response);
 
         });

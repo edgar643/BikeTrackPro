@@ -1,49 +1,47 @@
 <body>
-    <div class="overflow-auto">
-        <div id="modalEditBike" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header bg-dark">
-                        <h5 class="modal-title text-success">Edit</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-row form">
-                                <div class="form-group col-md-2">
-                                    <label for="">id</label>
-                                    <input type="text" readonly class="form-control col" value="{{bicycle.id}}"
-                                        placeholder="Id" #id>
-                                </div>
-                                <div class="form-group-sm col-md-3">
-                                    <label for="">Type</label>
-                                    <input type="text" autofocus="true" value="{{bicycle.type}}" class="form-control"
-                                        value placeholder="Type" #type>
-                                </div>
-                                <div class="form-group-sm col-md-3">
-                                    <label for="">Brand</label>
-                                    <input type="text" autofocus="true" value="{{bicycle.brand}}" class="form-control"
-                                        value placeholder="Brand" #brand>
-                                </div>
-                                <div class="form-group-sm col-md-3">
-                                    <label for="">Color</label>
-                                    <input type="text" autofocus="true" value="{{bicycle.color}}" class="form-control"
-                                        value placeholder="Color" #color>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-dark col-md-2" data-dismiss="modal"
-                            (click)=update(id.value,type.value,brand.value,color.value)>Update</button>
-                        <button type="button" class="btn btn-outline-dark col-md-2" data-dismiss="modal">Cancel</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
+  <div class="overflow-auto">
+    <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Visualizar</h4>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalEditar?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-row form">
+          <div class="form-group col-md-2">
+            <label for="">Id</label>
+            <input type="text" readonly class="form-control col" value="{{bicycle.id}}"
+                   placeholder="Id" #id>
+          </div>
+          <div class="form-group-sm col-md-12">
+            <label for="">Type</label>
+            <input type="text" autofocus="true" value="{{bicycle.type}}" class="form-control"
+                   value placeholder="Type" #type>
+          </div>
+          <div class="form-group-sm col-md-12">
+            <label for="">Brand</label>
+            <input type="text" autofocus="true" value="{{bicycle.brand}}" class="form-control"
+                   value placeholder="Brand" #brand>
+          </div>
+          <div class="form-group-sm col-md-12">
+            <label for="">Color</label>
+            <input type="text" autofocus="true" value="{{bicycle.color}}" class="form-control"
+                   value placeholder="Color" #color>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark col-md-2" data-dismiss="modal"
+              (click)=update(id.value,type.value,brand.value,color.value)>Update
+      </button>
+      <button type="button" class="btn btn-outline-dark col-md-2" data-dismiss="modal">Cancel</button>
+    </div>
+
+</ng-template>
 
         <!--Modal create-->
         <div id="modalCreate" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog">
@@ -59,7 +57,7 @@
                         <form>
                             <div class="form-row form">
                                 <div hidden="form-group col-md-2">
-                                    <label for="">id</label>
+                                    <label for="">Id</label>
                                     <input type="text" readonly class="form-control col" value="{{bicycle.id}}"
                                         placeholder="Id" #id2>
                                 </div>
@@ -101,7 +99,8 @@
                     <div class="container-fluid">
                         <div class="card animated fadeIn fast">
                             <div class="card-header">
-                                <h5 class="text-md-left">Bicycles</h5>
+                                <button type="button" class="btn btn-outline-dark col-md-2  col-xl-1 ml-auto"
+                                     data-toggle="modal" data-target="#modalCreate" >Create</button>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body table-responsive p-0">
