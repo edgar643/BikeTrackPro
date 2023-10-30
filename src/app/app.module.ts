@@ -10,10 +10,12 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { BicyclesComponent } from './components/bicycles/bicycles.component';
 import { EventsComponent } from './components/events/events.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule ,HTTP_INTERCEPTORS} from '@angular/common/http';
 import { MapComponent } from './components/map/map.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { RentalComponent } from './components/rental/rental.component';
+import { RequestInterceptor } from './_interceptor/request.interceptor';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     BicyclesComponent,
     EventsComponent,
     MapComponent,
+    RentalComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     BsDropdownModule.forRoot(),
     ModalModule.forRoot()
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true},],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

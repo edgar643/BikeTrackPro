@@ -1,50 +1,75 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BicycleDTO ,Bicycle} from './bicycleDTO';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { HttpClient ,HttpHeaderResponse, HttpHeaders} from '@angular/common/http';
+import { BicycleDTO, Bicycle } from './bicycleDTO';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import axios from 'axios';
+import { HttpParams } from '@angular/common/http';
 @Component({
     selector: 'app-bicycles',
     templateUrl: './bicycles.component.html',
     styleUrls: ['./bicycles.component.css']
 })
 export class BicyclesComponent {
-  private HOST = 'http://192.168.20.23';
-  private PORT = '3000';
-  private url = this.HOST + ':' + this.PORT + '/v1/bikes/';
-  public listBicycles: any[] = [];
+    private HOST = 'http://a9568e758dd4842f29f14e96a9a732d2-253209064.us-east-2.elb.amazonaws.com';
+    private PORT = '';
+    private URL = this.HOST + '/v1/bikes/';
+    public listBicycles: any[] = [];
+    private dato: any ={
+
+        "brand": "Specialized",
+        "type": "Mountain Bike",
+        "color": "Pink"
+    };
     public bicycle: BicycleDTO = {
         id: 0
         , type: ""
         , brand: ""
         , color: ""
     };
-  modalEditar?: BsModalRef;
-  modalCrear?: BsModalRef;
-    public bicycleWitoutId: Bicycle = {
-         type: ""
+    public bicycleC: BicycleDTO = {
+        id: 0
+        , type: ""
         , brand: ""
         , color: ""
     };
-  openModal(template: TemplateRef<any>) {
-    this.modalEditar = this.modalService.show(template);
-  }
+    modalEditar?: BsModalRef;
+    modalCrear?: BsModalRef;
+    public bicycleWitoutId: Bicycle = {
+          type: ""
+        , brand: ""
+        , color: ""
+    };
+    openModal(template: TemplateRef<any>, id: string) {
+        console.log(id.toString);
+        this.getOne(id);
+        this.modalEditar = this.modalService.show(template);
 
+    }
+
+    openModalCreate(template: TemplateRef<any>) {
+
+        this.bicycleC.id = 0;
+        this.bicycleC.type = "";
+        this.bicycleC.brand = "";
+        this.bicycleC.color = "";
+        this.modalCrear = this.modalService.show(template);
+
+    }
     constructor(private http: HttpClient, private modalService: BsModalService) {
         console.log("Servicio Listo para consumir");
         //this.listBicycles =this.listMock;
-        this.getAll();
-        //this.listBicycles = this.listMock;
+       // this.getAll();
+        this.listBicycles = this.listMock;
     }
-
-    private getAll( ) {
-        this.http.get(this.url).subscribe((listado: any) => {
+    public getAll() {
+        this.http.get(this.URL).subscribe((listado: any) => {
             this.listBicycles = listado;
             console.log("All Bicycles");
             console.log(this.listBicycles);
         });
     }
     public getOne(id: string) {
-        const urlOne = this.url + id;
+        const urlOne = this.URL + id;
         this.http.get(urlOne).subscribe((bike: any) => {
             console.log(bike);
             this.bicycle = bike;
@@ -52,26 +77,30 @@ export class BicyclesComponent {
         });
         // this.bike = this.bikeMock;
     }
-    public update(id: number, type: string, brand: string, color: string) {
-        console.log("update")
-        const numericId = Number(id);
+public update(id:string, type: string, brand: string, color: string) {
+    console.log("update " + id.toString());
+    const numericId = Number(id);
+    this.bicycleWitoutId.type = type;
+    this.bicycleWitoutId.brand = brand;
+    this.bicycleWitoutId.color = color;
 
-        if (isNaN(numericId)) {
-            console.error("ID must be a numeric value.");
-            return; // Sal del método si el ID no es numérico
-        }
+    console.log(this.bicycle, this.bicycleWitoutId);
 
-        this.bicycle.id = numericId;
-        this.bicycle.type = type;
-        this.bicycle.brand = brand;
-        this.bicycle.color = color;
-        console.log(this.bicycle)
-        this.http.put(this.url + this.bicycle.id, this.bicycle).subscribe((response: any) => {
+    axios.put(this.URL + id, this.bicycleWitoutId)
+        .then(response => {
             console.log("Update");
-            console.log(response);
+            console.log("response: ", response.data);
+            this.modalEditar?.hide();
+            this.getAll();
+        })
+        .catch(error => {
+            console.error("Error during update:", error);
         });
-        window.location.reload();
-    }
+
+    //window.location.reload();
+}
+
+
 
     public create(type: string, brand: string, color: string) {
         console.log("create")
@@ -79,22 +108,26 @@ export class BicyclesComponent {
         this.bicycleWitoutId.brand = brand;
         this.bicycleWitoutId.color = color;
         console.log(this.bicycle)
-        this.http.post(this.url, this.bicycleWitoutId).subscribe((response: any) => {
+        console.log(this.bicycle, this.bicycleWitoutId);
+        const headers = new HttpHeaders().set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsInVzZXJuYW1lIjoiYyIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY5ODQ5MDgwMiwiZXhwIjoxNjk4NTEyNDAyfQ.1dOzJ8dwEcKXO__ltUOdjc89tCK__Oig3lZ5t5jm53o');
+
+        this.http.post(this.URL, this.bicycleWitoutId,{headers}).subscribe((response: any) => {
             console.log("Create");
             console.log(response);
+            //this.getAll();
         });
-        window.location.reload();
+      //  window.location.reload();
     }
 
     public delete(id: number,) {
         console.log("delete")
         const numericId = Number(id);
 
-        this.http.delete(this.url + numericId).subscribe((response: any) => {
+        this.http.delete(this.URL + numericId).subscribe((response: any) => {
             console.log("deleteResponse " + response);
 
         });
-         window.location.reload();
+        window.location.reload();
     }
 
 
@@ -207,5 +240,4 @@ export class BicyclesComponent {
         "type": "Mountain Bike",
         "color": "Deep-Blue"
     }
-    ];
-}
+    ];}

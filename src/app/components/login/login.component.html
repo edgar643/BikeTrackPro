@@ -5,7 +5,7 @@
             alt="Responsive image " src="/assets/portada.jpg">
         <div class="card-header card-header ">Inicio de Sesión</div>
         <div class="card-body " routerLinkActive="active ">
-            <form>
+            <form >
                 <div class="form-group ">
                     <div class="form-label-group ">
                         <input id="inputEmail" type="text " name="inputEmail" class="form-control "
@@ -15,7 +15,7 @@
                 </div>
                 <div class="form-group ">
                     <div class="form-label-group ">
-                        <input id="password" type="password " name="clave " class="form-control " placeholder="Contraseña "
+                        <input id="password" type="password" name="clave " class="form-control " placeholder="Contraseña "
                             required="required" #password>
                         <label for="password">Contraseña</label>
                     </div>
@@ -23,17 +23,17 @@
                 <div class="form-group ">
                     <div class="checkbox ">
                         <label>
-                            <input type="checkbox" value="remember-me ">
+                            <input type="checkbox" value="remember-me" >
                             Recordar Contraseña
                         </label>
                     </div>
                 </div>
-                <button type="button" class="btn btn-dark btn-block mt-1" [routerLink]="[ '/home'] "
-                    (click)=auhtenticate(username.value,password.value) name=" enviar ">Ingresar</button>
+                <button type="submit" class="btn btn-dark btn-block mt-1"
+                    (click)=auhtenticate(username.value,password.value) name="enviar">Ingresar</button>
                 <br>
-                <a href="#" class="fblogin social"><i class="fa fa-facebook"></i><span>Sign in with Facebook</span></a>
-                <a href="#" class="twlogin social"><i class="fa fa-twitter"></i><span>Sign in with Twitter</span></a>
-                <a href="#" class="gplogin social"><i class="fa fa-google-plus"></i><span>Sign in with Google</span></a>
+                <a href="#" class="fblogin social"><i class="fa fa-facebook"></i><span> Sign in with Facebook</span></a>
+                <a href="#" class="twlogin social"><i class="fa fa-twitter"></i><span> Sign in with Twitter</span></a>
+                <a href="#" class="gplogin social"><i class="fa fa-google-plus"></i><span> Sign in with Google</span></a>
             </form>
             <div class="text-center ">
                 <a class="d-block small mt-3 " href="register.html ">Registrarse</a>

@@ -1,92 +1,91 @@
 <body>
 
-  <div class="overflow-auto">
-    <ng-template #template>
-    <div class="modal-header">
-      <h4 class="modal-title pull-left">Visualizar</h4>
-      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalEditar?.hide()">
-        <span aria-hidden="true" class="visually-hidden">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <form>
-        <div class="form-row form">
-          <div class="form-group col-md-2">
-            <label for="">Id</label>
-            <input type="text" readonly class="form-control col" value="{{bicycle.id}}"
-                   placeholder="Id" #id>
-          </div>
-          <div class="form-group-sm col-md-12">
-            <label for="">Type</label>
-            <input type="text" autofocus="true" value="{{bicycle.type}}" class="form-control"
-                   value placeholder="Type" #type>
-          </div>
-          <div class="form-group-sm col-md-12">
-            <label for="">Brand</label>
-            <input type="text" autofocus="true" value="{{bicycle.brand}}" class="form-control"
-                   value placeholder="Brand" #brand>
-          </div>
-          <div class="form-group-sm col-md-12">
-            <label for="">Color</label>
-            <input type="text" autofocus="true" value="{{bicycle.color}}" class="form-control"
-                   value placeholder="Color" #color>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark col-md-2" data-dismiss="modal"
-              (click)=update(id.value,type.value,brand.value,color.value)>Update
-      </button>
-      <button type="button" class="btn btn-outline-dark col-md-2" data-dismiss="modal">Cancel</button>
-    </div>
+    <div class="overflow-auto">
+        <ng-template #template>
+            <div class="modal-header bg-dark">
+                <h4 class="modal-title pull-left text-white ">Edit</h4>
+                <button type="button" class="btn-close close pull-right" aria-label="Close"
+                    (click)="modalEditar?.hide()">
+                    <span aria-hidden="true" class="visually-hidden">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-row form">
+                        <div class="form-group col-md-2">
+                            <label for="">Id</label>
+                            <input type="text" readonly class="form-control col" value="{{bicycle.id}}" placeholder="Id"
+                                #id>
+                        </div>
+                        <div class="form-group-sm col-md-12">
+                            <label for="">Type</label>
+                            <input type="text" autofocus="true" value="{{bicycle.type}}" class="form-control" value
+                                placeholder="Type" #type>
+                        </div>
+                        <div class="form-group-sm col-md-12">
+                            <label for="">Brand</label>
+                            <input type="text" autofocus="true" value="{{bicycle.brand}}" class="form-control" value
+                                placeholder="Brand" #brand>
+                        </div>
+                        <div class="form-group-sm col-md-12">
+                            <label for="">Color</label>
+                            <input type="text" autofocus="true" value="{{bicycle.color}}" class="form-control" value
+                                placeholder="Color" #color>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark col-md-2" data-dismiss="modal"
+                    (click)=update(id.value,type.value,brand.value,color.value)>Update
+                </button>
+                <button type="button" class="btn btn-outline-dark col-md-2" data-dismiss="modal"
+                    (click)="modalEditar?.hide()">Cancel</button>
+            </div>
 
-</ng-template>
+        </ng-template>
 
         <!--Modal create-->
-        <div id="modalCreate" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header bg-dark">
-                        <h5 class="modal-title text-success">Create</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-row form">
-                                <div hidden="form-group col-md-2">
-                                    <label for="">Id</label>
-                                    <input type="text" readonly class="form-control col" value="{{bicycle.id}}"
-                                        placeholder="Id" #id2>
-                                </div>
-                                <div class="form-group-sm col-md-3">
-                                    <label for="">Type</label>
-                                    <input type="text" autofocus="true" value="{{bicycle.type}}" class="form-control"
-                                        value placeholder="Type" #type2>
-                                </div>
-                                <div class="form-group-sm col-md-3">
-                                    <label for="">Brand</label>
-                                    <input type="text" autofocus="true" value="{{bicycle.brand}}" class="form-control"
-                                        value placeholder="Brand" #brand2>
-                                </div>
-                                <div class="form-group-sm col-md-3">
-                                    <label for="">Color</label>
-                                    <input type="text" autofocus="true" value="{{bicycle.color}}" class="form-control"
-                                        value placeholder="Color" #color2>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-dark col-md-2" data-dismiss="modal"
-                        (click)=create(type2.value,brand2.value,color2.value) >Save</button>
-                        <button type="button" class="btn btn-outline-dark col-md-2" data-dismiss="modal">Cancel</button>
-                    </div>
-                </div>
+        <ng-template #templateCreate>
+            <div class="modal-header bg-dark">
+                <h4 class="modal-title pull-left text-white ">Create</h4>
+                <button type="button" class="btn-close close pull-right" aria-label="Close"
+                    (click)="modalCrear?.hide()">
+                    <span aria-hidden="true" class="visually-hidden">&times;</span>
+                </button>
             </div>
-        </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-row form">
+                        <div hidden class="form-group col-md-2">
+                            <label for="">Id</label>
+                            <input type="text" readonly class="form-control col" value="{{bicycleC.id}}"
+                                placeholder="Id" #id2>
+                        </div>
+                        <div class="form-group-sm col-md-12">
+                            <label for="">Type</label>
+                            <input type="text" autofocus="true" value="{{bicycleC.type}}" class="form-control" value
+                                placeholder="Type" #type2>
+                        </div>
+                        <div class="form-group-sm col-md-12">
+                            <label for="">Brand</label>
+                            <input type="text" autofocus="true" value="{{bicycleC.brand}}" class="form-control" value
+                                placeholder="Brand" #brand2>
+                        </div>
+                        <div class="form-group-sm col-md-12">
+                            <label for="">Color</label>
+                            <input type="text" autofocus="true" value="{{bicycleC.color}}" class="form-control" value
+                                placeholder="Color" #color2>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark col-md-2" (click)="modalCrear?.hide()"
+                    (click)=create(type2.value,brand2.value,color2.value)>Save</button>
+                <button type="button" class="btn btn-outline-dark col-md-2" (click)="modalCrear?.hide()">Cancel</button>
+            </div>
+        </ng-template>
         <div id="content" class="container-fluid">
             <div class="container-fluid">
                 <ol class="breadcrumb mt-2">
@@ -99,8 +98,12 @@
                     <div class="container-fluid">
                         <div class="card animated fadeIn fast">
                             <div class="card-header">
-                                <button type="button" class="btn btn-outline-dark col-md-2  col-xl-1 ml-auto"
-                                     data-toggle="modal" data-target="#modalCreate" >Create</button>
+                                <button type="button" class="btn btn-outline-dark col-md-2 col-xl-1 m-1"
+                                    data-toggle="modal" data-target="#modalCreate"
+                                    (click)="openModalCreate(templateCreate)">Create</button>
+                                <button type="button" class="btn btn-outline-dark col-md-2 col-xl-1 "
+                                    (click)="getAll()">Refresh</button>
+
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body table-responsive p-0">
@@ -125,58 +128,42 @@
                                             <td class="text-md-left col-sm-3 col-md-3">{{bicycle.brand}}</td>
                                             <td class="text-md-left col-sm-3 col-md-3">{{bicycle.color}}</td>
                                             <td class="text-md-center">
-                                                <div class="dropdown">
-                                                    <button class="btn btn-sm btn-outline-dark btn-group-sm "
-                                                        type="button" id="dropdownMenu2" data-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false">
+
+                                                <div class="btn-group" dropdown>
+                                                    <button id="button-basic" dropdownToggle type="button"
+                                                        class="btn btn-sm btn-outline-dark btn-group-sm"
+                                                        aria-controls="dropdown-basic">
                                                         <i class="fa fa-bars"></i>
                                                     </button>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                                        <button class="dropdown-item" type="submit" data-toggle="modal"
-                                                            data-target="#modalEditBike" (click)="getOne(bicycle.id)"><i
-                                                                class="fa fa-edit"> </i> Edit</button>
-                                                        <button class="dropdown-item" type="button"
-                                                            (click)="delete(bicycle.id)"><i class="fa fa-trash"></i>
-                                                            Delete</button>
-                                                    </div>
-                                                </div>
-                                                <div class="btn-group" dropdown>
-                                                    <button id="button-basic" dropdownToggle type="button" class="btn btn-sm btn-outline-dark btn-group-sm" aria-controls="dropdown-basic">
-                                                            <i class="fa fa-bars"></i>
-                                                    </button>
-                                                    <div id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
-                                                        <button class="dropdown-item" role="menuitem" type="button" (click)="openModal(template)"><i class="fa fa-edit"> </i> Ver Detalle</button>
-                                                        <button hidden="true" class="dropdown-item" role="menuitem" type="button"> <i class="fa fa-trash"></i> Eliminar</button>
-                                                    </div>
-                                                </div>
-                                                <!-- <div class="dropdown">
-                                                        <button class="btn btn-sm btn-outline-dark btn-group-sm " type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <i class="fa fa-bars"></i>
+                                                    <div id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                                                        role="menu" aria-labelledby="button-basic">
+                                                        <button class="dropdown-item" role="menuitem" type="button"
+                                                                (click)="openModal(template,bicycle.id)"><i
+                                                          class="fa fa-edit"> </i>Edit
                                                         </button>
-                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                                            <button class="dropdown-item" type="button" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-edit"> </i> Ver Detalle</button>
-                                                            <button hidden="true" class="dropdown-item" type="button"> <i class="fa fa-trash"></i> Eliminar</button>
-                                                        </div>
-                                                    </div> -->
+                                                      <button class="dropdown-item" role="menuitem" type="button"><i
+                                                        class="fa fa-trash"></i> Delete
+                                                      </button>
+                                                    </div>
+                                                </div>
                                             </td>
-                                            <td class="text-md-center col-md-4">
+                                          <td class="text-md-center col-md-4">
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="card-tools">
+                          <div class="card-tools">
 
-                                <ul class="pagination pagination-sm float-sm-left ml-1">
-                                    <li class="page-item"><a class="page-link text-dark" href="#">&laquo;</a></li>
-                                    <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link text-dark" href="#">&raquo;</a></li>
-                                </ul>
-                            </div>
-                            <!-- /.card-body -->
+                            <ul class="pagination pagination-sm float-sm-left ml-1">
+                              <li class="page-item"><a class="page-link text-dark" href="#">&laquo;</a></li>
+                              <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
+                              <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
+                              <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
+                              <li class="page-item"><a class="page-link text-dark" href="#">&raquo;</a></li>
+                            </ul>
+                          </div>
                         </div>
-                        <!-- /.card -->
+
                     </div>
 
                 </div>
@@ -185,4 +172,3 @@
 
     </div>
 </body>
-
