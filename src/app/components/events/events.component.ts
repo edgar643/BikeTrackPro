@@ -1,10 +1,15 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.css']
 })
-export class EventsComponent {
+export class EventsComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
 
 }

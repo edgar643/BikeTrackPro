@@ -1,0 +1,132 @@
+<body>
+    <div class="overflow-auto">
+        <div id="exampleModal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark">
+                        <h5 class="modal-title text-success">Editar</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Codigo</label>
+                                    <input type="text" readonly class="form-control" id="codigo" value={{marca.codigo}} placeholder="Codigo">
+                                    <input hidden="true" type="text" readonly class="form-control" id="id" value={{marca.id}} #idMarca>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="marca">Marca</label>
+                                    <input type="text" autofocus="true" class="form-control" id="marca" value={{marca.nombre}} placeholder="Marca" #nombreMarca>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="creado">Creado</label>
+                                    <input type="text" readonly class="form-control" id="creado" value={{marca.fechaCreacion}} placeholder="Creado">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputPassword4">Actualizado</label>
+                                    <input type="text" readonly class="form-control" id="actualizacion" value={{marca.fechaActualizacion}} placeholde="Actualizado">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-dark" (click)=updateOne(nombreMarca.value,idMarca.value)>Guardar</button>
+                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="container-fluid">
+            <div class="align-items-center pt-3 pb-2 mb-3 border-bottom">
+
+            </div>
+            <div class="container-fluid">
+                <ol class="breadcrumb mt-2">
+                    <li class="breadcrumb-item">
+                        <a href="#">Maestros</a>
+                    </li>
+                    <li class="breadcrumb-item active">Marcas</li>
+                </ol>
+                <div class="input-group mb-0 input-group-sm mb-2">
+                    <input type="text" class="form-control input-group-append col-md-4 col-sm-12 text-md-left form-control datetimepicker-input mb-2 " id="busqueda" type="search" autofocus="autofocus" placeholder="Busqueda" #nombre>
+                    <div class="input-group-append btn-group mb-0 ">
+                        <button class="btn btn-outline-dark mb-2" type="button" title=""> Buscar <span class="fa fa-search"></span></button>
+                        <button type="button" class="btn btn-sm btn-outline-dark mb-2" (click)=createOne(nombre.value,1)>Agregar <span class="fa fa-plus-square-o"></span></button>
+                        <button type="button" class="btn btn-sm btn-outline-dark mb-2">Compartir <span class="fa fa-share"></span></button>
+                        <button type="button" class="btn btn-sm btn-outline-dark mb-2">Exportar <span class="fa fa-file-pdf-o"></span></button>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="container-fluid">
+                        <div class="card animated fadeIn fast">
+                            <div class="card-header">
+                                <h5 class="text-md-left">Marcas</h5>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-sm table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th hidden="true" class="text-md-center">ID</th>
+                                            <th class="text-md-center">Codigo</th>
+                                            <th class="text-md-left"> Nombre</th>
+                                            <th hidden="true">Creado</th>
+                                            <th hidden="true">Actualizado</th>
+                                            <th class="text-md-center">Acción</th>
+                                            <th WIDTH="25%"> </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr *ngFor="let marca of marcas">
+                                            <td hidden="true" class="text-md-center">{{marca.id}}</td>
+                                            <td class="text-md-center">{{marca.codigo}}</td>
+                                            <td>{{marca.nombre}}</td>
+                                            <td hidden="true">{{marca.fechaCreacion}}</td>
+                                            <td hidden="true">{{marca.fechaActualizacion|date:'d/m/y' }}</td>
+                                            <td class="text-md-center">
+                                                <div class="dropdown">
+                                                    <button class="btn btn-sm btn-outline-dark btn-group-sm " type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                      <i class="fa fa-bars"></i>
+                                              </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                                        <button class="dropdown-item" type="button" data-toggle="modal" data-target="#exampleModal" (click)="getOne(marca.id)"><i class="fa fa-edit"> </i>Editar</button>
+                                                        <button class="dropdown-item" type="button"> <i class="fa fa-trash"></i> Eliminar</button>
+
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-tools">
+
+                                <ul class="pagination pagination-sm float-sm-left ml-1">
+                                    <li class="page-item"><a class="page-link text-dark" href="#">&laquo;</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">&raquo;</a></li>
+                                </ul>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>

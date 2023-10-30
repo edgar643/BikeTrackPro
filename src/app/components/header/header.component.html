@@ -6,31 +6,32 @@
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-        <h5 class="h5-especial">BikeTrackPro</h5></a>
-    <!--link rel="stylesheet" href="src\app\components\login\font-awesome.min.css"-->
-    <div  class="collapse navbar-collapse" id="navbarSupportedContent">
+        <h5 class="h5-especial">BikeTrackPro</h5>
+    </a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link text-light" [routerLink]="['bicycles']"> <img src="assets\home.svg" width="30" height="30" alt="">Bicycles <span class="sr-only">(current)</span></a>
+                <a class="nav-link text-light" [routerLink]="['bicycles']"> <img src="assets\home.svg" width="30"
+                        height="30" alt="">Bicycles <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link text-light" [routerLink]="['events']"> <img src="assets\route.svg" width="30" height="30" alt="">Events <span class="sr-only">(current)</span></a>
+                <a class="nav-link text-light" [routerLink]="['events']"> <img src="assets\award.svg" width="30"
+                        height="30" alt="">Events <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link text-light" [routerLink]="['']"> <img src="assets\route.svg" width="30" height="30" alt="">Routes <span class="sr-only">(current)</span></a>
+                <a class="nav-link text-light" [routerLink]="['']"> <img src="assets\route.svg" width="30" height="30"
+                        alt="">Routes <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" [routerLink]="['']"> <img src="assets\reserve.png" width="30" height="30" alt="">Reservas</a>
+                <a class="nav-link text-light" [routerLink]="['rental']"> <img src="assets\reserve.png" width="30" height="30"
+                        alt="">Rent</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" [routerLink]="['map']"> <img src="assets\reserve.png" width="30" height="30" alt="">Ride Maps</a>
+                <a class="nav-link text-light" [routerLink]="['map']"> <img src="assets\map.svg" width="30" height="30" alt="">Ride Maps</a>
             </li>
-            <!-- <li class="nav-item">
-                <a class="nav-link text-light"  [routerLink]="['login']" > <img src="assets\power-off.svg" width="30" height="30" alt=""> Salir</a>
-            </li> -->
             <li class="nav-item">
-                <a class="nav-link text-light" style="cursor: pointer;" (click)="openModal(template)"> <img src="assets\power-off.svg" width="30" height="30" alt=""> Log Out</a>
-            </li>
+                <a class="nav-link text-light" style="cursor: pointer;" (click)="openModal(template)"> <img src="assets\power-off.svg" width="30" height="30" alt=""> Log Out</a></li>
         </ul>
         <form hidden="true" class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
@@ -41,8 +42,8 @@
 
 <!-- Logout Modal-->
 <ng-template #template>
-    <div class="modal-header">
-        <h4 class="modal-title pull-left">¿Desea salir?</h4>
+    <div class="modal-header bg-dark ">
+        <h4 class="modal-title pull-left text-white">¿Desea salir?</h4>
         <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
           <span aria-hidden="true" class="visually-hidden">&times;</span>
         </button>
@@ -50,25 +51,8 @@
     <div class="modal-body">
         <div class="modal-body">Seleccione salir para cerrar sesion</div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-outline-dark" (click)="modalRef?.hide()">Cancelar</button>
-            <button type="button" class="btn btn-outline-danger" (click)="closeSesion()">Salir</button>
+            <button type="button" class="btn btn-outline-dark col-md-3 " (click)="modalRef?.hide()">Cancelar</button>
+            <button type="button" class="btn btn-outline-danger col-md-3" (click)="closeSesion()">Salir</button>
         </div>
     </div>
 </ng-template>
-<!-- <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header btn-dark">
-                <h5 class="modal-title" id="exampleModalLabel">¿Desea salir?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-            </div>
-            <div class="modal-body">Seleccione salir para cerrar sesion</div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark">Cancelar</button>
-                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Salir</button>
-            </div>
-        </div>
-    </div>
-</div> -->

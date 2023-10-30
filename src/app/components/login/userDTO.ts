@@ -4,3 +4,8 @@ export interface UserDTO {
     password: string;
     role: string;
 }
+
+export interface UserDTOAuth {
+     username: string;
+    password: string;}
+   

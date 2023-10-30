@@ -1,0 +1,140 @@
+<body>
+    <div class="overflow-auto">
+        <div id="exampleModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark">
+                        <h5 class="modal-title text-success">Visualizar</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-row form">
+                                <div class="form-group col-md-4">
+                                    <label for="inputEmail4">DNI</label>
+                                    <input type="text" readonly class="form-control" value={{uno.dni}} placeholder="DNI">
+                                    <input hidden="true" readonly type="text" readonly class="form-control" value={{uno.id}} #idlistado>
+                                </div>
+                                <div class="form-group-sm col-md-4">
+                                    <label for="lista">Nombre</label>
+                                    <input type="text" readonly autofocus="true" class="form-control" value={{uno.nombre}} placeholder="Linea" #nombrelistado>
+                                </div>
+                                <div class="form-group-sm col-md-4">
+                                    <label for="list">FechaCreacion</label>
+                                    <input type="text" readonly autofocus="true" class="form-control" value={{uno.fechaCreacion}} placeholder="Fecha Creacion" #nombrelistado>
+                                </div>
+                            </div>
+
+
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button hidden="true" type="button" class="btn btn-outline-dark" (click)=updateOne(nombrelistado.value,idlistado.value)>Guardar</button>
+                        <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Ocultar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="container-fluid">
+            <div class="container-fluid">
+                <ol class="breadcrumb mt-2">
+                    <li class="breadcrumb-item">
+                        <a href="#">Maestros</a>
+                    </li>
+                    <li class="breadcrumb-item active">Clientes</li>
+                </ol>
+                <div class="input-group input-group-sm mb-0">
+                    <input type="text" class="form-control input-group-append col-md-3 col-sm-12 text-md-left form-control datetimepicker-input mb-2 " id="busqueda" (keyup.enter)="listByParams(nombre.value,idFiltro.value)" type="search" autofocus="autofocus" placeholder="Busqueda"
+                        #nombre>
+                    <input type="date" class="form-control input-group-append col-md-2 col-sm-12 text-md-left form-control datetimepicker-input mb-2 " id="fecha" (keyup.enter)="listByParams(nombre.value,idFiltro.value)" autofocus="autofocus" placeholder="Fecha Creacion"
+                        #fecha>
+                    <input type="date" class="form-control input-group-append col-md-2 col-sm-12 text-md-left form-control datetimepicker-input mb-2 " id="fecha" (keyup.enter)="listByParams(nombre.value,idFiltro.value)" autofocus="autofocus" placeholder="Fecha Creacion"
+                        #fecha2>
+                    <div class="form-row input-group-append mb-0 ">
+                        <select #idFiltro class="input-group-append custom-select-sm col-md-5 col-sm-12" id="exampleFormControlSelect1">
+                      <option value="4">Nombre Cliente</option>
+                      <option value="1">Fecha Actualizacion</option>
+                                                           </select>
+                        <button class="btn btn-outline-dark  mb-2" type="button" (click)=listByParams(nombre.value,idFiltro.value)> Buscar <span class="fa fa-search"></span></button>
+                        <button hidden="true" type="button" class="btn btn-sm btn-outline-dark mb-2" (click)=createOne(nombre.value,1)>Agregar <span class="fa fa-plus-square-o"></span></button>
+                        <button type="button" class="btn btn-sm btn-outline-dark mb-2">Compartir <span class="fa fa-share"></span></button>
+                        <button hidden="true" type="button" class="btn btn-sm btn-outline-dark mb-2">Exportar <span class="fa fa-file-pdf-o"></span></button>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="container-fluid">
+                        <div class="card animated fadeIn fast">
+                            <div class="card-header">
+                                <h5 class="text-md-left">CLIENTES</h5>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-sm table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th hidden="true" class="text-md-center">ID</th>
+                                            <th class="text-md-center">DNI</th>
+                                            <th class="text-md-left">Nombre</th>
+                                            <th>Razon Social</th>
+                                            <th>Ciudad</th>
+                                            <th>Dirección</th>
+                                            <th>Celular</th>
+                                            <th class="text-md-center">Acción</th>
+                                            <th WIDTH="0%"> </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr *ngFor="let lista of list">
+                                            <td hidden="true" class="text-md-center">{{lista.id}}</td>
+                                            <td class="text-md-center">{{lista.idPersona}}</td>
+                                            <td>{{lista.nombrePersona}}</td>
+                                            <td>{{lista.razonSocial}}</td>
+                                            <td>{{lista.ciudad}}</td>
+                                            <td class="text-md-left">{{lista.direccion}}</td>
+                                            <td class="text-md-left">{{lista.telefono}}</td>
+
+                                            <td class="text-md-center">
+                                                <div class="dropdown">
+                                                    <button class="btn btn-sm btn-outline-dark btn-group-sm " type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                  <i class="fa fa-bars"></i>
+                                          </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                                        <button class="dropdown-item" type="button" data-toggle="modal" data-target="#exampleModal" (click)="getOne(lista.id)"><i class="fa fa-edit"> </i> Ver Detalle</button>
+                                                        <button hidden="true" class="dropdown-item" type="button"> <i class="fa fa-trash"></i> Eliminar</button>
+
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-tools">
+
+                                <ul class="pagination pagination-sm float-sm-left ml-1">
+                                    <li class="page-item"><a class="page-link text-dark" href="#">&laquo;</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">&raquo;</a></li>
+                                </ul>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>

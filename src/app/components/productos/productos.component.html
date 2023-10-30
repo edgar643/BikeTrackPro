@@ -1,0 +1,289 @@
+<body>
+    <div class="overflow-auto">
+        <div id="exampleModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark">
+                        <h5 class="modal-title text-success"><img src="assets\products.svg" width="30" height="30" alt=""> Visualizar Producto</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-row form">
+                                <div class="form-group col-md-4">
+                                    <label for="inputEmail4">Codigo</label>
+                                    <input type="text" readonly class="form-control" value={{marca.codigo}} placeholder="Codigo">
+                                    <input hidden="true" readonly type="text" readonly class="form-control" value={{marca.id}} #idMarca>
+                                </div>
+                                <div class="form-group-sm col-md-4">
+                                    <label for="marca">Linea</label>
+                                    <input type="text" readonly autofocus="true" class="form-control" value={{marca.linea}} placeholder="Linea" #nombreMarca>
+                                </div>
+                                <div class="form-group-sm col-md-4">
+                                    <label for="marca">Categoria</label>
+                                    <input type="text" readonly autofocus="true" class="form-control" value={{marca.categoria}} placeholder="Categoria" #nombreMarca>
+                                </div>
+                            </div>
+                            <div class="form-row form">
+                                <div class="form-group col-md-8">
+                                    <label for="inputEmail4">Descripcion</label>
+                                    <input type="text" readonly class="form-control" value={{marca.descripcion}} placeholder="Descripcion">
+                                    <input hidden="true" readonly type="text" readonly class="form-control" id="id" value={{marca.id}} #idMarca>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="marca">Marca</label>
+                                    <input type="text" readonly autofocus="true" class="form-control" value={{marca.marca}} placeholder="Marca" #nombreMarca>
+                                </div>
+                            </div>
+
+                            <div class="form-row form">
+                                <div class="form-group col-md-4">
+                                    <label for="inputEmail4">Und. Empaque</label>
+                                    <input type="text" readonly class="form-control" value={{marca.unidadEmpaque}} placeholder="Und. Empaque">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="marca">Und. Despacho</label>
+                                    <input type="text" readonly class="form-control" value={{marca.unidadDespacho}} placeholder="Und. Despacho" #nombreMarca>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="marca">Und. Medida</label>
+                                    <input type="text" readonly class="form-control" value={{marca.unidadMedida}} placeholder="Und. Medida" #nombreMarca>
+                                </div>
+                            </div>
+                            <div class="form-row form">
+                                <div class="form-group col-md-8">
+                                    <label for="inputEmail4">Tipo Producto</label>
+                                    <input type="text" readonly class="form-control" value={{marca.tipoProducto}} placeholder="Tipo Producto">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="marca">Producto</label>
+                                    <input type="text" readonly autofocus="true" class="form-control" value={{marca.tipoProducto}} placeholder="Producto" #nombreMarca>
+                                </div>
+                            </div>
+                            <div class="form-row form">
+                                <div class="form-group col-md-4">
+                                    <label for="inputEmail4">Cód. Barra Prod.</label>
+                                    <input type="text" readonly class="form-control" value={{marca.codigoBarrasProducto}} placeholder="Und. Emp">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="marca">Cód. Barra. Sub Emp.</label>
+                                    <input type="text" readonly class="form-control" value={{marca.codigoBarrasSubempaque}} placeholder="Und. Despacho" #nombreMarca>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="marca">Cód. Barra Emp.</label>
+                                    <input type="text" readonly class="form-control" value={{marca.codigoBarrasEmpaque}} placeholder="Und. Medida" #nombreMarca>
+                                </div>
+                            </div>
+                            <div class="form-row form">
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Proveedor Principal</label>
+                                    <input type="text" readonly class="form-control" value={{marca.proveedorPrincipal}} placeholder="Proveedor Principal">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="marca">Proveedor Secundario</label>
+                                    <input readonly type="text" autofocus="true" class="form-control" value={{marca.otroProveedores}} placeholder="Proveedor Secundario" #nombreMarca>
+                                </div>
+                            </div>
+                            <div class="form-row form">
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Clase de Producto</label>
+                                    <input type="text" readonly class="form-control" value={{marca.claseProducto}} placeholder="Clase de Producto">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="marca">Forma de Pago</label>
+                                    <input type="text" readonly autofocus="true" class="form-control" value={{marca.formaPago}} placeholder="Forma de Pago" #nombreMarca>
+                                </div>
+                            </div>
+                            <div class="form-row form">
+                                <div class="form-group col-md-4">
+                                    <label for="inputEmail4">Costo Sin IVA</label>
+                                    <input type="text" readonly class="form-control" value={{marca.costoSinIva}} placeholder="Costo Sin IVA">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="marca">Porcentaje IVA</label>
+                                    <input type="text" readonly class="form-control" id="marca" value={{marca.porcentajeIva}} placeholder="Porcentaje IVA" #nombreMarca>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="costoiva">Costo con IVA</label>
+                                    <input type="text" readonly class="form-control" id="costoiva" value={{marca.costoConIva}} placeholder="Costo con IVA" #nombreMarca>
+                                </div>
+                            </div>
+                            <div class="form-row form">
+                                <div class="form-group col">
+                                    <label for="precio1">Precio 1</label>
+                                    <input type="text" readonly class="form-control" id="precio1" value={{marca.precioVentaUno}} placeholder="Precio 1">
+                                </div>
+                                <div class="form-group col">
+                                    <label for="precio2">Precio 2</label>
+                                    <input type="text" readonly class="form-control" id="precio2" value={{marca.precioVentaDos}} placeholder="Precio 2">
+                                </div>
+                                <div class="form-group col">
+                                    <label for="precio3">Precio 2</label>
+                                    <input type="text" readonly class="form-control" id="precio3" value={{marca.precioVentaTres}} placeholder="Precio 3">
+                                </div>
+                                <div class="form-group col">
+                                    <label for="precio4">Precio 4</label>
+                                    <input type="text" readonly class="form-control" id="precio4" value={{marca.precioVentaCuatro}} placeholder="Precio 4">
+                                </div>
+
+                            </div>
+                            <div class="form-row form">
+                                <div class="form-group col">
+                                    <label for="margen1">Margen 1</label>
+                                    <input type="text" readonly class="form-control" id="margen1" value={{marca.codigo}} placeholder="Margen 1">
+                                </div>
+                                <div class="form-group col">
+                                    <label for="margen2">Margen 2</label>
+                                    <input type="text" readonly class="form-control" id="margen2" value={{marca.codigo}} placeholder="Margen 2">
+                                </div>
+                                <div class="form-group col">
+                                    <label for="margen3">Margen 3</label>
+                                    <input type="text" readonly class="form-control" id="margen3" value={{marca.codigo}} placeholder="Margen 4">
+                                </div>
+                                <div class="form-group col">
+                                    <label for="margen4">Margen 4</label>
+                                    <input type="text" readonly class="form-control" id="margen4" value={{marca.codigo}} placeholder="Margen 4">
+                                </div>
+
+
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="creado">Creado</label>
+                                    <input readonly type="text" class="form-control" id="creado" value={{marca.fechaCreacion}} placeholder="Creado">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputPassword4">Actualizado</label>
+                                    <input readonly type="text" class="form-control" id="actualizacion" value={{marca.fechaActualizacion}} placeholder="Actualizado">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>Estado</label>
+                                    <input *ngIf="marca.estado==true" type="text" class="form-control bg-success text-md-center text-white" value="Activo" placeholder="Estado">
+                                    <input *ngIf="marca.estado==false" type="text" class="form-control bg-danger text-md-center text-white" value="Inactivo" placeholder="Estado">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button hidden="true" type="button" class="btn btn-outline-dark" (click)=updateOne(nombreMarca.value,idMarca.value)>Guardar</button>
+                        <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Ocultar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="container-fluid">
+            <div class="container-fluid">
+                <ol class="breadcrumb mt-2">
+                    <li class="breadcrumb-item">
+                        <a href="#">Maestros</a>
+                    </li>
+                    <li class="breadcrumb-item active">Productos</li>
+                </ol>
+                <div class="input-group input-group-sm mb-0">
+                    <input type="text" class="form-control input-group-append col-md-4 col-sm-12 text-md-left form-control datetimepicker-input mb-2 " id="busqueda" (keyup.enter)="listByParams(nombre.value,idFiltro.value)" type="search" autofocus="autofocus" placeholder="Busqueda"
+                        #nombre>
+
+                    <input type="date" class="form-control input-group-append col-md-2 col-sm-12 text-md-left form-control datetimepicker-input mb-2 " id="fecha" (keyup.enter)="listByParams(nombre.value,idFiltro.value)" autofocus="autofocus" placeholder="Fecha Creacion"
+                        #fecha>
+                    <input type="date" class="form-control input-group-append col-md-2 col-sm-12 text-md-left form-control datetimepicker-input mb-2 " id="fecha" (keyup.enter)="listByParams(nombre.value,idFiltro.value)" autofocus="autofocus" placeholder="Fecha Creacion"
+                        #fecha2>
+                    <div class="form-row input-group-append mb-0 ">
+                        <select #idFiltro class="input-group-append custom-select-sm col-md-3 col-sm-12" id="exampleFormControlSelect1">
+                        <option value="4">Descripcion Producto</option>
+                        <option value="1">Linea</option>
+                        <option value="2">Categoria</option>
+                        <option value="3">Marca</option>
+                                       </select>
+                        <button class="btn btn-outline-dark  mb-2" type="button" (click)=listByParams(nombre.value,idFiltro.value)> Buscar <span class="fa fa-search"></span></button>
+                        <button hidden="true" type="button" class="btn btn-sm btn-outline-dark mb-2" (click)=createOne(nombre.value,1)>Agregar <span class="fa fa-plus-square-o"></span></button>
+                        <button type="button" class="btn btn-sm btn-outline-dark mb-2">Compartir <span class="fa fa-share"></span></button>
+                        <button type="button" class="btn btn-sm btn-outline-dark mb-2">Exportar <span class="fa fa-file-pdf-o"></span></button>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="container-fluid">
+                        <div class="card animated fadeIn fast">
+                            <div class="card-header">
+                                <h5 class="text-md-left">PRODUCTOS</h5>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-sm table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th hidden="true" class="text-md-center">ID</th>
+                                            <th class="text-md-center">Codigo</th>
+                                            <th class="text-md-left">Descripcion</th>
+                                            <th>Categoria</th>
+                                            <th>Marca</th>
+                                            <th>CostoSI</th>
+                                            <th>CostoCI</th>
+                                            <th>IVA</th>
+                                            <th>Precio 1</th>
+                                            <th>Precio 2</th>
+                                            <th>Precio 3</th>
+                                            <th>Estado</th>
+                                            <th class="text-md-center">Acción</th>
+                                            <th WIDTH="0%"> </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr *ngFor="let producto of productos">
+                                            <td hidden="true" class="text-md-center">{{producto.id}}</td>
+                                            <td class="text-md-center">{{producto.codigo}}</td>
+                                            <td>{{producto.descripcion}}</td>
+                                            <td>{{producto.categoria}}</td>
+                                            <td>{{producto.marca}}</td>
+                                            <td class="text-right">{{producto.costoConIva|number}}</td>
+                                            <td class="text-right">{{producto.costoConIva|number}}</td>
+                                            <td class="text-right">{{producto.porcentajeIva|number}}</td>
+                                            <td class="text-right">{{producto.precioVentaUno | number}}</td>
+                                            <td class="text-right">{{producto.precioVentaDos | number}}</td>
+                                            <td class="text-right">{{producto.precioVentaTres | number}}</td>
+                                            <td class="text-center" *ngIf="producto.estado==true">Activo</td>
+                                            <td class="text-center" *ngIf="producto.estado==false">Inactivo</td>
+                                            <td class="text-md-center">
+                                                <div class="dropdown">
+                                                    <button class="btn btn-sm btn-outline-dark btn-group-sm " type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fa fa-bars"></i>
+                                            </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                                        <button class="dropdown-item" type="button" data-toggle="modal" data-target="#exampleModal" (click)="getOne(producto.id)"><i class="fa fa-edit"> </i> Ver Detalle</button>
+                                                        <button hidden="true" class="dropdown-item" type="button"> <i class="fa fa-trash"></i> Eliminar</button>
+
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-tools">
+
+                                <ul class="pagination pagination-sm float-sm-left ml-1">
+                                    <li class="page-item"><a class="page-link text-dark" href="#">&laquo;</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link text-dark" href="#">&raquo;</a></li>
+                                </ul>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
