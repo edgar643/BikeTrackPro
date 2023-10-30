@@ -1,4 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+
+footer {
+    color: white;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}
 /* styles.css */
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import url("https://unpkg.com/leaflet@1.9.4/dist/leaflet.css");
