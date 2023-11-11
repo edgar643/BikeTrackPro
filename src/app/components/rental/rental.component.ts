@@ -16,8 +16,7 @@ export class RentalComponent {
   //private header =
   private HOST = 'http://localhost';
   private PORT = ':5003';
-
-  private URL = this.HOST + '/v1/rental/';
+  private URL = this.HOST + this.PORT + '/api/v1/rental/';
   public list: any[] = [];
   constructor(private http: HttpClient, private modalService: BsModalService) {
     this.getAllDisp();
@@ -43,22 +42,18 @@ export class RentalComponent {
     this.modalCrear = this.modalService.show(template);
   }
   public getAllDisp() {
-
-    // Define los parámetros que deseas enviar en la solicitud
-    const params = new HttpParams().set('status', 'Available');
-
     // Realiza la solicitud HTTP GET con los parámetros
-    this.http.get(this.URL, { params }).subscribe((data: any) => {
+    this.http.get(this.URL+"availables").subscribe(
+      (data: any) => {
       this.list = data;
       console.log(data);
     });
-
   }
   public getOne(id: string) {
     const urlOne = this.URL + id;
-    this.http.get(urlOne).subscribe((r: any) => {
-      console.log(r);
-      this.rentalDTO = r;
+    this.http.get(urlOne).subscribe((response: any) => {
+      console.log(response);
+      this.rentalDTO = response;
       console.log("Get One " + this.rentalDTO);
     });
   }
