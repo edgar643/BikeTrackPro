@@ -8,8 +8,8 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
     styleUrls: ['./bicycles.component.css']
 })
 export class BicyclesComponent {
-    private HOST = 'http://localhost:';
-    private PORT = '8080';
+    private HOST = 'http://localhost';
+    private PORT = ':5000';
     private URL = this.HOST + this.PORT+ '/api/v1/bikes';
     public listBicycles: any[] = [];
     private dato: any ={

@@ -13,9 +13,10 @@ import { HttpParams } from '@angular/common/http';
 export class RentalComponent {
   modalEditar?: BsModalRef;
   modalCrear?: BsModalRef;
-  //private header = 
-  private HOST = 'http://a9568e758dd4842f29f14e96a9a732d2-253209064.us-east-2.elb.amazonaws.com';
- 
+  //private header =
+  private HOST = 'http://localhost';
+  private PORT = ':5003';
+
   private URL = this.HOST + '/v1/rental/';
   public list: any[] = [];
   constructor(private http: HttpClient, private modalService: BsModalService) {
@@ -43,7 +44,6 @@ export class RentalComponent {
   }
   public getAllDisp() {
 
-
     // Define los parámetros que deseas enviar en la solicitud
     const params = new HttpParams().set('status', 'Available');
 
@@ -64,7 +64,7 @@ export class RentalComponent {
   }
 
 
-  public updateRentar(id: number, type: string, brand: string, color: string) {
+  public updateRental(id: number, type: string, brand: string, color: string) {
     console.log("update " + id.toString());
     const numericId = Number(id);
     this.rentalDTO.status = "Ocuppied";
@@ -75,8 +75,8 @@ export class RentalComponent {
     console.log(this.rentalDTO);
     // Define los parámetros que deseas enviar en la solicitud
     //const params = new HttpParams().set('status', 'Available');
-    const headers = new HttpHeaders().set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsInVzZXJuYW1lIjoiYyIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY5ODQ5MDgwMiwiZXhwIjoxNjk4NTEyNDAyfQ.1dOzJ8dwEcKXO__ltUOdjc89tCK__Oig3lZ5t5jm53o');
-    this.http.patch(this.URL + "book/" + id, this.rentalDTO,{headers})
+   // const headers = new HttpHeaders().set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsInVzZXJuYW1lIjoiYyIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY5ODQ5MDgwMiwiZXhwIjoxNjk4NTEyNDAyfQ.1dOzJ8dwEcKXO__ltUOdjc89tCK__Oig3lZ5t5jm53o');
+    this.http.patch(this.URL + "book/" + id, this.rentalDTO)
       .subscribe(response => {
         console.log("Update");
         console.log("response: ", response);

@@ -14,22 +14,22 @@
         <div class="form-row form">
           <div class="form-group col-md-2">
             <label for="">Id</label>
-            <input type="text" readonly class="form-control col" value="{{bicycle.id}}" placeholder="Id"
+            <input type="text" readonly class="form-control col" value="{{xEvent.id}}" placeholder="Id"
                    #id>
           </div>
           <div class="form-group-sm col-md-12">
             <label for="">Type</label>
-            <input type="text" autofocus="true" value="{{bicycle.type}}" class="form-control" value
+            <input type="text" autofocus="true" value="{{xEvent.name}}" class="form-control" value
                    placeholder="Type" #type>
           </div>
           <div class="form-group-sm col-md-12">
             <label for="">Brand</label>
-            <input type="text" autofocus="true" value="{{bicycle.brand}}" class="form-control" value
+            <input type="text" autofocus="true" value="{{xEvent.location}}" class="form-control" value
                    placeholder="Brand" #brand>
           </div>
           <div class="form-group-sm col-md-12">
             <label for="">Color</label>
-            <input type="text" autofocus="true" value="{{bicycle.color}}" class="form-control" value
+            <input type="text" autofocus="true" value="{{xEvent.date}}" class="form-control" value
                    placeholder="Color" #color>
           </div>
         </div>
@@ -59,22 +59,32 @@
         <div class="form-row form">
           <div hidden class="form-group col-md-2">
             <label for="">Id</label>
-            <input type="text" readonly class="form-control col" value="{{bicycleC.id}}"
+            <input type="text" readonly class="form-control col" value="{{event.id}}"
                    placeholder="Id" #id2>
           </div>
           <div class="form-group-sm col-md-12">
-            <label for="">Type</label>
-            <input type="text" autofocus="true" value="{{bicycleC.type}}" class="form-control" value
+            <label for="">Name</label>
+            <input type="text" autofocus="true" value="{{event.name}}" class="form-control" value
                    placeholder="Type" #type2>
           </div>
           <div class="form-group-sm col-md-12">
-            <label for="">Brand</label>
-            <input type="text" autofocus="true" value="{{bicycleC.brand}}" class="form-control" value
+            <label for="">Location</label>
+            <input type="text" autofocus="true" value="{{event.location}}" class="form-control" value
                    placeholder="Brand" #brand2>
           </div>
           <div class="form-group-sm col-md-12">
-            <label for="">Color</label>
-            <input type="text" autofocus="true" value="{{bicycleC.color}}" class="form-control" value
+            <label for="">Date</label>
+            <input type="text" autofocus="true" value="{{event.date}}" class="form-control" value
+                   placeholder="Color" #color2>
+          </div>
+          <div class="form-group-sm col-md-12">
+            <label for="">IsCompetition</label>
+            <input type="text" autofocus="true" value="{{event.competition}}" class="form-control" value
+                   placeholder="Color" #color2>
+          </div>
+          <div class="form-group-sm col-md-12">
+            <label for="">Prize</label>
+            <input type="text" autofocus="true" value="{{event.prize}}" class="form-control" value
                    placeholder="Color" #color2>
           </div>
         </div>
@@ -111,9 +121,11 @@
                 <thead>
                 <tr>
                   <th class="text-md-center col-sm col-md-1">Id</th>
-                  <th class="text-md-left col-sm col-md-2">Type</th>
-                  <th class="text-md-left col-sm col-md-2">Brand</th>
-                  <th class="text-md-left col-sm col-md-2">Color</th>
+                  <th class="text-md-left col-sm col-md-2">Name</th>
+                  <th class="text-md-left col-sm col-md-2">Location</th>
+                  <th class="text-md-left col-sm col-md-2">Date</th>
+                  <th class="text-md-left col-sm col-md-2">Is Competition</th>
+                  <th class="text-md-left col-sm col-md-2">Prize</th>
                   <th class="text-md-center col-sm col-md-2"></th>
 
                   <th WIDTH="0%"> </th>
@@ -121,12 +133,14 @@
                 </thead>
                 <tbody>
 
-                <tr *ngFor="let bicycle of listBicycles">
+                <tr *ngFor="let event of listEvent">
 
-                  <td class="text-md-center ">{{bicycle.id}}</td>
-                  <td class="text-md-left col-sm-3 col-md-3">{{bicycle.type}}</td>
-                  <td class="text-md-left col-sm-3 col-md-3">{{bicycle.brand}}</td>
-                  <td class="text-md-left col-sm-3 col-md-3">{{bicycle.color}}</td>
+                  <td class="text-md-center ">{{event.id}}</td>
+                  <td class="text-md-left col-sm-3 col-md-3">{{event.name}}</td>
+                  <td class="text-md-left col-sm-3 col-md-3">{{event.location}}</td>
+                  <td class="text-md-left col-sm-3 col-md-3">{{event.date | date:'dd/MM/yyyy'}}</td>
+                  <td class="text-md-centerol-sm-3 col-md-3">{{event.competition}}</td>
+                  <td class="text-md-left col-sm-3 col-md-3">{{event.prize| currency}}</td>
                   <td class="text-md-center">
 
                     <div class="btn-group" dropdown>
@@ -138,7 +152,7 @@
                       <div id="dropdown-basic" *dropdownMenu class="dropdown-menu"
                            role="menu" aria-labelledby="button-basic">
                         <button class="dropdown-item" role="menuitem" type="button"
-                                (click)="openModal(template,bicycle.id)"><i
+                                (click)="openModal(template,event.id)"><i
                           class="fa fa-edit"> </i>Edit
                         </button>
                         <button class="dropdown-item" role="menuitem" type="button"><i
