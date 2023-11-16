@@ -36,10 +36,10 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark col-md-2" data-dismiss="modal"
+                <button type="button" class="btn btn-outline-dark col-md-3" data-dismiss="modal"
                     (click)=update(id.value,type.value,brand.value,color.value)>Update
                 </button>
-                <button type="button" class="btn btn-outline-dark col-md-2" data-dismiss="modal"
+                <button type="button" class="btn btn-outline-dark col-md-3" data-dismiss="modal"
                     (click)="modalEditar?.hide()">Cancel</button>
             </div>
 
@@ -81,9 +81,9 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark col-md-2" (click)="modalCrear?.hide()"
+                <button type="button" class="btn btn-outline-dark col-md-3" (click)="modalCrear?.hide()"
                     (click)=create(type2.value,brand2.value,color2.value)>Save</button>
-                <button type="button" class="btn btn-outline-dark col-md-2" (click)="modalCrear?.hide()">Cancel</button>
+                <button type="button" class="btn btn-outline-dark col-md-3" (click)="modalCrear?.hide()">Cancel</button>
             </div>
         </ng-template>
         <div id="content" class="container-fluid">
@@ -95,13 +95,13 @@
                     <li class="breadcrumb-item active">Bicycles</li>
                 </ol>
                 <div class="row">
-                    <div class="container-fluid">
-                        <div class="card animated fadeIn fast">
-                            <div class="card-header">
-                                <button type="button" class="btn btn-outline-dark col-md-2 col-xl-1 m-1"
+                    <div class="container-fluid col-sm-12">
+                        <div class="card animated fadeIn fast col-sm-12">
+                            <div class="card-header col-sm-12">
+                                <button type="button" class="btn btn-outline-dark col-md-2 col-sm-6 col-xl-1 m-1"
                                     data-toggle="modal" data-target="#modalCreate"
                                     (click)="openModalCreate(templateCreate)">Create</button>
-                                <button type="button" class="btn btn-outline-dark col-md-2 col-xl-1 "
+                                <button type="button" class="btn btn-outline-dark col-md-2 col-sm-12 col-xl-1 "
                                     (click)="getAll()">Refresh</button>
 
                             </div>
@@ -141,8 +141,9 @@
                                                                 (click)="openModal(template,bicycle.id)"><i
                                                           class="fa fa-edit"> </i>Edit
                                                         </button>
-                                                      <button class="dropdown-item" role="menuitem" type="button"><i
-                                                        class="fa fa-trash"></i> Delete
+                                                      <button class="dropdown-item" role="menuitem" type="button"
+                                                              (click)="delete(bicycle.id)">
+                                                        <i class="fa fa-trash"></i> Delete
                                                       </button>
                                                     </div>
                                                 </div>

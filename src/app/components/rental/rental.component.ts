@@ -3,8 +3,7 @@ import { OnInit, TemplateRef } from '@angular/core';
 import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/http';
 import { RentalDTO, Bicycle } from './bicycleDTO';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import axios from 'axios';
-import { HttpParams } from '@angular/common/http';
+
 @Component({
   selector: 'app-rental',
   templateUrl: './rental.component.html',
@@ -13,11 +12,12 @@ import { HttpParams } from '@angular/common/http';
 export class RentalComponent {
   modalEditar?: BsModalRef;
   modalCrear?: BsModalRef;
-  //private header = 
-  private HOST = 'http://a9568e758dd4842f29f14e96a9a732d2-253209064.us-east-2.elb.amazonaws.com';
- 
-  private URL = this.HOST + '/v1/rental/';
+  //private header =
+  private HOST = 'http://192.168.1.2';
+  private PORT = ':5003';
+  private URL = this.HOST + this.PORT + '/api/v1/rental/';
   public list: any[] = [];
+  public listOccupied: any[] = [];
   constructor(private http: HttpClient, private modalService: BsModalService) {
     this.getAllDisp();
   }
@@ -42,50 +42,64 @@ export class RentalComponent {
     this.modalCrear = this.modalService.show(template);
   }
   public getAllDisp() {
-
-
-    // Define los parámetros que deseas enviar en la solicitud
-    const params = new HttpParams().set('status', 'Available');
-
     // Realiza la solicitud HTTP GET con los parámetros
-    this.http.get(this.URL, { params }).subscribe((data: any) => {
-      this.list = data;
-      console.log(data);
-    });
-
+    this.http.get(this.URL + "availables").subscribe(
+      (data: any) => {
+        this.list = data;
+        console.log(data);
+      });
+  }
+  public getAllOccupied() {
+    // Realiza la solicitud HTTP GET con los parámetros
+    this.http.get(this.URL + "occupied").subscribe(
+      (data: any) => {
+        this.listOccupied = data;
+        console.log(data);
+      });
   }
   public getOne(id: string) {
     const urlOne = this.URL + id;
-    this.http.get(urlOne).subscribe((r: any) => {
-      console.log(r);
-      this.rentalDTO = r;
+    this.http.get(urlOne).subscribe((response: any) => {
+      console.log(response);
+      this.rentalDTO = response;
       console.log("Get One " + this.rentalDTO);
     });
   }
 
 
-  public updateRentar(id: number, type: string, brand: string, color: string) {
+  public bookRental(id: number, type: string, brand: string, color: string) {
     console.log("update " + id.toString());
     const numericId = Number(id);
-    this.rentalDTO.status = "Ocuppied";
+    this.rentalDTO.status = status;
     this.rentalDTO.id = id;
     this.rentalDTO.type = type;
     this.rentalDTO.brand = brand;
     this.rentalDTO.color = color;
     console.log(this.rentalDTO);
-    // Define los parámetros que deseas enviar en la solicitud
-    //const params = new HttpParams().set('status', 'Available');
-    const headers = new HttpHeaders().set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsInVzZXJuYW1lIjoiYyIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY5ODQ5MDgwMiwiZXhwIjoxNjk4NTEyNDAyfQ.1dOzJ8dwEcKXO__ltUOdjc89tCK__Oig3lZ5t5jm53o');
-    this.http.patch(this.URL + "book/" + id, this.rentalDTO,{headers})
+    this.http.put(this.URL + "book/" + id, this.rentalDTO)
       .subscribe(response => {
         console.log("Update");
         console.log("response: ", response);
         this.modalEditar?.hide();
         this.getAllDisp();
-      })
-      ;
-
-    //window.location.reload();
+        this.getAllOccupied();
+      });
   }
-
+  public checkOutRental(id: number, type: string, brand: string, color: string) {
+    console.log("update " + id.toString());
+    const numericId = Number(id);
+      this.rentalDTO.id = id;
+    this.rentalDTO.type = type;
+    this.rentalDTO.brand = brand;
+    this.rentalDTO.color = color;
+    console.log(this.rentalDTO);
+    this.http.put(this.URL + "checkout/" + id, this.rentalDTO)
+      .subscribe(response => {
+        console.log("Update");
+        console.log("response: ", response);
+        this.modalEditar?.hide();
+        this.getAllDisp();
+        this.getAllOccupied();
+      });
+  }
 }

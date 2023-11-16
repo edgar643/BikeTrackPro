@@ -2,20 +2,17 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { HttpClient ,HttpHeaderResponse, HttpHeaders} from '@angular/common/http';
 import { BicycleDTO, Bicycle } from './bicycleDTO';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import axios from 'axios';
-import { HttpParams } from '@angular/common/http';
 @Component({
     selector: 'app-bicycles',
     templateUrl: './bicycles.component.html',
     styleUrls: ['./bicycles.component.css']
 })
 export class BicyclesComponent {
-    private HOST = 'http://a9568e758dd4842f29f14e96a9a732d2-253209064.us-east-2.elb.amazonaws.com';
-    private PORT = '';
-    private URL = this.HOST + '/v1/bikes/';
+    private HOST = 'http://192.168.1.2';
+    private PORT = ':5000';
+    private URL = this.HOST + this.PORT+ '/api/v1/bikes';
     public listBicycles: any[] = [];
     private dato: any ={
-
         "brand": "Specialized",
         "type": "Mountain Bike",
         "color": "Pink"
@@ -57,48 +54,57 @@ export class BicyclesComponent {
     }
     constructor(private http: HttpClient, private modalService: BsModalService) {
         console.log("Servicio Listo para consumir");
-        //this.listBicycles =this.listMock;
-       // this.getAll();
-        this.listBicycles = this.listMock;
+       this.getAll();
+        //this.listBicycles = this.listMock;
     }
     public getAll() {
-        this.http.get(this.URL).subscribe((listado: any) => {
-            this.listBicycles = listado;
-            console.log("All Bicycles");
-            console.log(this.listBicycles);
-        });
+        // Make an HTTP GET request to the specified URL
+          console.log(this.URL);
+        this.http.get(this.URL).subscribe(
+          
+            (listado: any) => {
+                // Success callback
+                this.listBicycles = listado;
+    
+                // Log to the console the message "All Bicycles"
+                console.log("All Bicycles");
+                // Log to the console the content of 'listBicycles'
+                console.log(this.listBicycles);
+            },
+            (error) => {
+                // Error callback
+                // Display an alert with the error message
+                alert(`Error: ${error.message}`);
+                // Log the error to the console
+                console.error("Error fetching bicycles:", error);
+            }
+        );
     }
+    
     public getOne(id: string) {
-        const urlOne = this.URL + id;
+        const urlOne = this.URL +"/"+ id;
         this.http.get(urlOne).subscribe((bike: any) => {
             console.log(bike);
             this.bicycle = bike;
             console.log("Get One " + this.bicycle);
         });
-        // this.bike = this.bikeMock;
     }
-public update(id:string, type: string, brand: string, color: string) {
+
+  public update(id: string, type: string, brand: string, color: string) {
     console.log("update " + id.toString());
     const numericId = Number(id);
     this.bicycleWitoutId.type = type;
     this.bicycleWitoutId.brand = brand;
     this.bicycleWitoutId.color = color;
-
     console.log(this.bicycle, this.bicycleWitoutId);
-
-    axios.put(this.URL + id, this.bicycleWitoutId)
-        .then(response => {
-            console.log("Update");
-            console.log("response: ", response.data);
-            this.modalEditar?.hide();
-            this.getAll();
-        })
-        .catch(error => {
-            console.error("Error during update:", error);
-        });
-
-    //window.location.reload();
-}
+    this.http.put(this.URL +"/" + id, this.bicycleWitoutId)
+      .subscribe(response => {
+        console.log("Update");
+        console.log("response: ", response);
+        this.modalEditar?.hide();
+        this.getAll();
+      });
+  }
 
 
 
@@ -109,9 +115,8 @@ public update(id:string, type: string, brand: string, color: string) {
         this.bicycleWitoutId.color = color;
         console.log(this.bicycle)
         console.log(this.bicycle, this.bicycleWitoutId);
-        const headers = new HttpHeaders().set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsInVzZXJuYW1lIjoiYyIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY5ODQ5MDgwMiwiZXhwIjoxNjk4NTEyNDAyfQ.1dOzJ8dwEcKXO__ltUOdjc89tCK__Oig3lZ5t5jm53o');
-
-        this.http.post(this.URL, this.bicycleWitoutId,{headers}).subscribe((response: any) => {
+        this.http.post(this.URL, this.bicycleWitoutId)
+                 .subscribe((response: any) => {
             console.log("Create");
             console.log(response);
             //this.getAll();
@@ -119,15 +124,15 @@ public update(id:string, type: string, brand: string, color: string) {
       //  window.location.reload();
     }
 
-    public delete(id: number,) {
+    public delete(id: number) {
         console.log("delete")
         const numericId = Number(id);
 
-        this.http.delete(this.URL + numericId).subscribe((response: any) => {
+        this.http.delete(this.URL +"/"+ numericId).subscribe((response: any) => {
             console.log("deleteResponse " + response);
 
         });
-        window.location.reload();
+
     }
 
 
