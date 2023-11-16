@@ -124,7 +124,7 @@
                   <th class="text-md-left col-sm col-md-2">Name</th>
                   <th class="text-md-left col-sm col-md-2">Location</th>
                   <th class="text-md-left col-sm col-md-2">Date</th>
-                  <th class="text-md-left col-sm col-md-2">Is Competition</th>
+                  <th class="text-md-center col-sm col-md-2">Is Competition</th>
                   <th class="text-md-left col-sm col-md-2">Prize</th>
                   <th class="text-md-center col-sm col-md-2"></th>
 
@@ -136,11 +136,11 @@
                 <tr *ngFor="let event of listEvent">
 
                   <td class="text-md-center ">{{event.id}}</td>
-                  <td class="text-md-left col-sm-3 col-md-3">{{event.name}}</td>
-                  <td class="text-md-left col-sm-3 col-md-3">{{event.location}}</td>
-                  <td class="text-md-left col-sm-3 col-md-3">{{event.date | date:'dd/MM/yyyy'}}</td>
-                  <td class="text-md-centerol-sm-3 col-md-3">{{event.competition}}</td>
-                  <td class="text-md-left col-sm-3 col-md-3">{{event.prize| currency}}</td>
+                  <td class="text-md-left col-sm-3 col-md-2">{{event.name}}</td>
+                  <td class="text-md-left col-sm-3 col-md-2">{{event.location}}</td>
+                  <td class="text-md-left col-sm-3 col-md-2">{{event.date | date:'dd/MM/yyyy'}}</td>
+                  <td class="text-md-center col-sm-3 col-md-2">{{event.competition}}</td>
+                  <td class="text-md-left col-sm-3 col-md-2">{{event.prize| currency}}</td>
                   <td class="text-md-center">
 
                     <div class="btn-group" dropdown>

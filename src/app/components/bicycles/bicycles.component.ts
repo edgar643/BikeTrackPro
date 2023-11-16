@@ -8,12 +8,11 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
     styleUrls: ['./bicycles.component.css']
 })
 export class BicyclesComponent {
-    private HOST = 'http://localhost';
+    private HOST = 'http://192.168.1.2';
     private PORT = ':5000';
     private URL = this.HOST + this.PORT+ '/api/v1/bikes';
     public listBicycles: any[] = [];
     private dato: any ={
-
         "brand": "Specialized",
         "type": "Mountain Bike",
         "color": "Pink"
@@ -59,12 +58,29 @@ export class BicyclesComponent {
         //this.listBicycles = this.listMock;
     }
     public getAll() {
-        this.http.get(this.URL).subscribe((listado: any) => {
-            this.listBicycles = listado;
-            console.log("All Bicycles");
-            console.log(this.listBicycles);
-        });
+        // Make an HTTP GET request to the specified URL
+          console.log(this.URL);
+        this.http.get(this.URL).subscribe(
+          
+            (listado: any) => {
+                // Success callback
+                this.listBicycles = listado;
+    
+                // Log to the console the message "All Bicycles"
+                console.log("All Bicycles");
+                // Log to the console the content of 'listBicycles'
+                console.log(this.listBicycles);
+            },
+            (error) => {
+                // Error callback
+                // Display an alert with the error message
+                alert(`Error: ${error.message}`);
+                // Log the error to the console
+                console.error("Error fetching bicycles:", error);
+            }
+        );
     }
+    
     public getOne(id: string) {
         const urlOne = this.URL +"/"+ id;
         this.http.get(urlOne).subscribe((bike: any) => {

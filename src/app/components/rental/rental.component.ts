@@ -3,8 +3,7 @@ import { OnInit, TemplateRef } from '@angular/core';
 import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/http';
 import { RentalDTO, Bicycle } from './bicycleDTO';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import axios from 'axios';
-import { HttpParams } from '@angular/common/http';
+
 @Component({
   selector: 'app-rental',
   templateUrl: './rental.component.html',
@@ -14,10 +13,11 @@ export class RentalComponent {
   modalEditar?: BsModalRef;
   modalCrear?: BsModalRef;
   //private header =
-  private HOST = 'http://localhost';
+  private HOST = 'http://192.168.1.2';
   private PORT = ':5003';
   private URL = this.HOST + this.PORT + '/api/v1/rental/';
   public list: any[] = [];
+  public listOccupied: any[] = [];
   constructor(private http: HttpClient, private modalService: BsModalService) {
     this.getAllDisp();
   }
@@ -43,11 +43,19 @@ export class RentalComponent {
   }
   public getAllDisp() {
     // Realiza la solicitud HTTP GET con los parámetros
-    this.http.get(this.URL+"availables").subscribe(
+    this.http.get(this.URL + "availables").subscribe(
       (data: any) => {
-      this.list = data;
-      console.log(data);
-    });
+        this.list = data;
+        console.log(data);
+      });
+  }
+  public getAllOccupied() {
+    // Realiza la solicitud HTTP GET con los parámetros
+    this.http.get(this.URL + "occupied").subscribe(
+      (data: any) => {
+        this.listOccupied = data;
+        console.log(data);
+      });
   }
   public getOne(id: string) {
     const urlOne = this.URL + id;
@@ -59,28 +67,39 @@ export class RentalComponent {
   }
 
 
-  public updateRental(id: number, type: string, brand: string, color: string) {
+  public bookRental(id: number, type: string, brand: string, color: string) {
     console.log("update " + id.toString());
     const numericId = Number(id);
-    this.rentalDTO.status = "Ocuppied";
+    this.rentalDTO.status = status;
     this.rentalDTO.id = id;
     this.rentalDTO.type = type;
     this.rentalDTO.brand = brand;
     this.rentalDTO.color = color;
     console.log(this.rentalDTO);
-    // Define los parámetros que deseas enviar en la solicitud
-    //const params = new HttpParams().set('status', 'Available');
-   // const headers = new HttpHeaders().set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsInVzZXJuYW1lIjoiYyIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY5ODQ5MDgwMiwiZXhwIjoxNjk4NTEyNDAyfQ.1dOzJ8dwEcKXO__ltUOdjc89tCK__Oig3lZ5t5jm53o');
-    this.http.patch(this.URL + "book/" + id, this.rentalDTO)
+    this.http.put(this.URL + "book/" + id, this.rentalDTO)
       .subscribe(response => {
         console.log("Update");
         console.log("response: ", response);
         this.modalEditar?.hide();
         this.getAllDisp();
-      })
-      ;
-
-    //window.location.reload();
+        this.getAllOccupied();
+      });
   }
-
+  public checkOutRental(id: number, type: string, brand: string, color: string) {
+    console.log("update " + id.toString());
+    const numericId = Number(id);
+      this.rentalDTO.id = id;
+    this.rentalDTO.type = type;
+    this.rentalDTO.brand = brand;
+    this.rentalDTO.color = color;
+    console.log(this.rentalDTO);
+    this.http.put(this.URL + "checkout/" + id, this.rentalDTO)
+      .subscribe(response => {
+        console.log("Update");
+        console.log("response: ", response);
+        this.modalEditar?.hide();
+        this.getAllDisp();
+        this.getAllOccupied();
+      });
+  }
 }

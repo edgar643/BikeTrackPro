@@ -9,7 +9,7 @@ import axios from 'axios';
   styleUrls: ['./events.component.css']
 })
 export class EventsComponent {
-  private HOST = 'http://localhost';
+  private HOST = 'http://192.168.1.2';
   private PORT = ':5001';
   private URL = this.HOST + this.PORT + '/api/v1/events';
   public listEvent: any[] = [];

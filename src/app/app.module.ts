@@ -16,7 +16,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { RentalComponent } from './components/rental/rental.component';
 import { RequestInterceptor } from './_interceptor/request.interceptor';
-
+import { TabsModule } from 'ngx-bootstrap/tabs';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +34,8 @@ import { RequestInterceptor } from './_interceptor/request.interceptor';
     AppRoutingModule,
     HttpClientModule,
     BsDropdownModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    TabsModule.forRoot()
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true},],
   bootstrap: [AppComponent]

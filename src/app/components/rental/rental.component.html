@@ -1,138 +1,231 @@
+<ol class="breadcrumb mt-2">
+    <li class="breadcrumb-item">
+        <a href="#">Home</a>
+    </li>
+    <li class="breadcrumb-item active">Rental</li>
+</ol>
 <body>
-
-    <div class="overflow-auto">
-        <ng-template #template>
-            <div class="modal-header bg-dark">
-                <h4 class="modal-title pull-left text-white ">Edit</h4>
-                <button type="button" class="btn-close close pull-right" aria-label="Close"
-                    (click)="modalEditar?.hide()">
-                    <span aria-hidden="true" class="visually-hidden">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-row form">
-                        <div class="form-group col-md-2">
-                            <label for="">Id</label>
-                            <input type="text" readonly class="form-control col" value="{{rentalDTO.id}}" placeholder="Id" #id>
-                        </div>
-                        <div class="form-group-sm col-md-12">
-                            <label for="">Type</label>
-                            <input type="text" autofocus="true" value="{{rentalDTO.type}}" class="form-control" value
-                                placeholder="Type" #type>
-                        </div>
-                        <div class="form-group-sm col-md-12">
-                            <label for="">Brand</label>
-                            <input type="text" autofocus="true" value="{{rentalDTO.brand}}" class="form-control" value
-                                placeholder="Brand" #brand>
-                        </div>
-                        <div class="form-group-sm col-md-12">
-                            <label for="">Color</label>
-                            <input type="text" autofocus="true" value="{{rentalDTO.color}}" class="form-control" value
-                                placeholder="Color" #color>
+    <div class="container">
+        <tabset>
+          <tab heading="Availables">
+                   <div class="overflow-auto">
+                <ng-template #template>
+                    <div class="modal-header bg-dark">
+                        <h4 class="modal-title pull-left text-white ">Edit</h4>
+                        <button type="button" class="btn-close close pull-right" aria-label="Close"
+                            (click)="modalEditar?.hide()">
+                            <span aria-hidden="true" class="visually-hidden">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-row form">
+                                <div class="form-group col-md-2">
+                                    <label for="">Id</label>
+                                    <input type="text" readonly class="form-control col" value="{{rentalDTO.id}}" placeholder="Id" #id>
+                                </div>
+                                <div class="form-group-sm col-md-12">
+                                    <label for="">Type</label>
+                                    <input type="text" autofocus="true" value="{{rentalDTO.type}}" class="form-control" value
+                                        placeholder="Type" #type>
+                                </div>
+                                <div class="form-group-sm col-md-12">
+                                    <label for="">Brand</label>
+                                    <input type="text" autofocus="true" value="{{rentalDTO.brand}}" class="form-control" value
+                                        placeholder="Brand" #brand>
+                                </div>
+                                <div class="form-group-sm col-md-12">
+                                    <label for="">Color</label>
+                                    <input type="text" autofocus="true" value="{{rentalDTO.color}}" class="form-control" value
+                                        placeholder="Color" #color>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-dark col-md-2" data-dismiss="modal"
+                  >Update
+                        </button>
+                        <button type="button" class="btn btn-outline-dark col-md-2" data-dismiss="modal"
+                            (click)="modalEditar?.hide()">Cancel</button>
+                    </div>
+        
+                </ng-template>
+        
+                <!--Modal create-->
+        
+                <div id="content" class="container-fluid">
+                    <div class="container-fluid">
+                      
+                      <div class="row">
+                        <div class="container-fluid">
+                          <div class="card animated fadeIn fast">
+                            <div class="card-header">
+                              <button type="button" class="btn btn-outline-dark col-md-2 col-xl-1 m-1 "
+                                      (click)="getAllDisp()">Refresh
+                              </button>
+                            </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body table-responsive p-0">
+                                        <table class="table table-sm-12 table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-md-center col-sm col-md-1">Id</th>
+                                                    <th class="text-md-left col-sm col-md-2">Type</th>
+                                                    <th class="text-md-left col-sm col-md-2">Brand</th>
+                                                    <th class="text-md-left col-sm col-md-2">Color</th>
+                                                    <th class="text-md-center col-sm col-md-2"></th>
+        
+                                                    <th WIDTH="0%"> </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+        
+                                                <tr *ngFor="let rental of list">
+        
+                                                    <td class="text-md-center ">{{rental.id}}</td>
+                                                    <td class="text-md-left col-sm-3 col-md-3">{{rental.type}}</td>
+                                                    <td class="text-md-left col-sm-3 col-md-3">{{rental.brand}}</td>
+                                                    <td class="text-md-left col-sm-3 col-md-3">{{rental.color}}</td>
+                                                    <td class="text-md-center">
+        
+                                                        <div class="btn-group" dropdown>
+                                                            <button id="button-basic" dropdownToggle type="button"
+                                                                class="btn btn-sm btn-outline-dark btn-group-sm"
+                                                                aria-controls="dropdown-basic">
+                                                                <i class="fa fa-bars"></i>
+                                                            </button>
+                                                            <div id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                                                                role="menu" aria-labelledby="button-basic">
+                                                                <button class="dropdown-item" role="menuitem" type="button"  (click)="bookRental(rental.id, rental.type, rental.brand,rental.color)" ><i
+                                                                        class="fa fa-edit"> </i>Book</button>
+                                                                <button hidden ="dropdown-item" role="menuitem" type="button"> <i
+                                                                        class="fa fa-trash"></i> Delete</button>
+                                                            </div>
+                                                        </div>
+                                                        <!-- <div class="dropdown">
+                                                                <button class="btn btn-sm btn-outline-dark btn-group-sm " type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    <i class="fa fa-bars"></i>
+                                                                </button>
+                                                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                                                    <button class="dropdown-item" type="button" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-edit"> </i> Ver Detalle</button>
+                                                                    <button hidden="true" class="dropdown-item" type="button"> <i class="fa fa-trash"></i> Eliminar</button>
+                                                                </div>
+                                                            </div> -->
+                                                    </td>
+                                                    <td class="text-md-center col-md-4">
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="card-tools">
+        
+                                        <ul class="pagination pagination-sm float-sm-left ml-1">
+                                            <li class="page-item"><a class="page-link text-dark" href="#">&laquo;</a></li>
+                                            <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
+                                            <li class="page-item"><a class="page-link text-dark" href="#">&raquo;</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- /.card-body -->
+                                </div>
+                                <!-- /.card -->
+                            </div>
+        
                         </div>
                     </div>
-                </form>
+                </div>
+        
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark col-md-2" data-dismiss="modal"
-          >Update
-                </button>
-                <button type="button" class="btn btn-outline-dark col-md-2" data-dismiss="modal"
-                    (click)="modalEditar?.hide()">Cancel</button>
-            </div>
-
-        </ng-template>
-
-        <!--Modal create-->
-
-        <div id="content" class="container-fluid">
-            <div class="container-fluid">
-                <ol class="breadcrumb mt-2">
-                    <li class="breadcrumb-item">
-                        <a href="#">Home</a>
-                    </li>
-                    <li class="breadcrumb-item active">Rental</li>
-                </ol>
-              <div class="row">
+         
+          </tab>
+          <tab heading="Occupieds">
+                      <div id="content" class="container-fluid">
                 <div class="container-fluid">
-                  <div class="card animated fadeIn fast">
-                    <div class="card-header">
-                      <button type="button" class="btn btn-outline-dark col-md-2 col-xl-1 m-1 "
-                              (click)="getAllDisp()">Refresh
-                      </button>
-                    </div>
-                            <!-- /.card-header -->
-                            <div class="card-body table-responsive p-0">
-                                <table class="table table-sm-12 table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-md-center col-sm col-md-1">Id</th>
-                                            <th class="text-md-left col-sm col-md-2">Type</th>
-                                            <th class="text-md-left col-sm col-md-2">Brand</th>
-                                            <th class="text-md-left col-sm col-md-2">Color</th>
-                                            <th class="text-md-center col-sm col-md-2"></th>
-
-                                            <th WIDTH="0%"> </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        <tr *ngFor="let rental of list">
-
-                                            <td class="text-md-center ">{{rental.id}}</td>
-                                            <td class="text-md-left col-sm-3 col-md-3">{{rental.type}}</td>
-                                            <td class="text-md-left col-sm-3 col-md-3">{{rental.brand}}</td>
-                                            <td class="text-md-left col-sm-3 col-md-3">{{rental.color}}</td>
-                                            <td class="text-md-center">
-
-                                                <div class="btn-group" dropdown>
-                                                    <button id="button-basic" dropdownToggle type="button"
-                                                        class="btn btn-sm btn-outline-dark btn-group-sm"
-                                                        aria-controls="dropdown-basic">
-                                                        <i class="fa fa-bars"></i>
-                                                    </button>
-                                                    <div id="dropdown-basic" *dropdownMenu class="dropdown-menu"
-                                                        role="menu" aria-labelledby="button-basic">
-                                                        <button class="dropdown-item" role="menuitem" type="button"  (click)="updateRental(rental.id, rental.type, rental.brand, rental.color)" ><i
-                                                                class="fa fa-edit"> </i>Book</button>
-                                                        <button hidden ="dropdown-item" role="menuitem" type="button"> <i
-                                                                class="fa fa-trash"></i> Delete</button>
-                                                    </div>
-                                                </div>
-                                                <!-- <div class="dropdown">
-                                                        <button class="btn btn-sm btn-outline-dark btn-group-sm " type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  
+                  <div class="row">
+                    <div class="container-fluid">
+                      <div class="card animated fadeIn fast">
+                        <div class="card-header">
+                          <button type="button" class="btn btn-outline-dark col-md-2 col-xl-1 m-1 "
+                                  (click)="getAllOccupied()">Refresh
+                          </button>
+                        </div>
+                                <!-- /.card-header -->
+                                <div class="card-body table-responsive p-0">
+                                    <table class="table table-sm-12 table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center col-sm col-md-1">Id</th>
+                                                <th class="text-md-left col-sm col-md-2">Type</th>
+                                                <th class="text-md-left col-sm col-md-2">Brand</th>
+                                                <th class="text-md-left col-sm col-md-2">Color</th>
+                                                <th class="text-md-center col-sm col-md-2"></th>
+    
+                                                <th WIDTH="0%"> </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+    
+                                            <tr *ngFor="let rental of listOccupied">
+    
+                                                <td class="text-md-center ">{{rental.id}}</td>
+                                                <td class="text-md-left col-sm-3 col-md-3">{{rental.type}}</td>
+                                                <td class="text-md-left col-sm-3 col-md-3">{{rental.brand}}</td>
+                                                <td class="text-md-left col-sm-3 col-md-3">{{rental.color}}</td>
+                                                <td class="text-md-center">
+    
+                                                    <div class="btn-group" dropdown>
+                                                        <button id="button-basic" dropdownToggle type="button"
+                                                            class="btn btn-sm btn-outline-dark btn-group-sm"
+                                                            aria-controls="dropdown-basic">
                                                             <i class="fa fa-bars"></i>
                                                         </button>
-                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                                            <button class="dropdown-item" type="button" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-edit"> </i> Ver Detalle</button>
-                                                            <button hidden="true" class="dropdown-item" type="button"> <i class="fa fa-trash"></i> Eliminar</button>
+                                                        <div id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                                                            role="menu" aria-labelledby="button-basic">
+                                                            <button class="dropdown-item" role="menuitem" type="button"  (click)="checkOutRental(rental.id, rental.type, rental.brand, rental.color)" ><i
+                                                                    class="fa fa-edit"> </i>Checkout</button>
+                                                            <button hidden ="dropdown-item" role="menuitem" type="button"> <i
+                                                                    class="fa fa-trash"></i> Delete</button>
                                                         </div>
-                                                    </div> -->
-                                            </td>
-                                            <td class="text-md-center col-md-4">
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                                    </div>
+                                                    <!-- <div class="dropdown">
+                                                            <button class="btn btn-sm btn-outline-dark btn-group-sm " type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="fa fa-bars"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                                                <button class="dropdown-item" type="button" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-edit"> </i> Ver Detalle</button>
+                                                                <button hidden="true" class="dropdown-item" type="button"> <i class="fa fa-trash"></i> Eliminar</button>
+                                                            </div>
+                                                        </div> -->
+                                                </td>
+                                                <td class="text-md-center col-md-4">
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="card-tools">
+    
+                                    <ul class="pagination pagination-sm float-sm-left ml-1">
+                                        <li class="page-item"><a class="page-link text-dark" href="#">&laquo;</a></li>
+                                        <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link text-dark" href="#">&raquo;</a></li>
+                                    </ul>
+                                </div>
+                                <!-- /.card-body -->
                             </div>
-                            <div class="card-tools">
-
-                                <ul class="pagination pagination-sm float-sm-left ml-1">
-                                    <li class="page-item"><a class="page-link text-dark" href="#">&laquo;</a></li>
-                                    <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link text-dark" href="#">&raquo;</a></li>
-                                </ul>
-                            </div>
-                            <!-- /.card-body -->
+                            <!-- /.card -->
                         </div>
-                        <!-- /.card -->
+    
                     </div>
-
                 </div>
             </div>
-        </div>
-
-    </div>
+          </tab>
+        </tabset>
+      </div>
+      
+   
 </body>
