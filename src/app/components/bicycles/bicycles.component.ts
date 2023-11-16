@@ -115,9 +115,7 @@ export class BicyclesComponent {
         this.bicycleWitoutId.color = color;
         console.log(this.bicycle)
         console.log(this.bicycle, this.bicycleWitoutId);
-        const headers = new HttpHeaders().set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsInVzZXJuYW1lIjoiYyIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY5ODQ5MDgwMiwiZXhwIjoxNjk4NTEyNDAyfQ.1dOzJ8dwEcKXO__ltUOdjc89tCK__Oig3lZ5t5jm53o');
-
-        this.http.post(this.URL, this.bicycleWitoutId,{headers})
+        this.http.post(this.URL, this.bicycleWitoutId)
                  .subscribe((response: any) => {
             console.log("Create");
             console.log(response);

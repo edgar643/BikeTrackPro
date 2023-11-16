@@ -97,10 +97,7 @@ export class EventsComponent {
 
     console.log(this.xEvent)
 
-    const headers = new HttpHeaders().set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsInVzZXJuYW1lIjoiYyIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY5ODQ5MDgwMiwiZXhwIjoxNjk4NTEyNDAyfQ.1dOzJ8dwEcKXO__ltUOdjc89tCK__Oig3lZ5t5jm53o');
-
-
-    //  window.location.reload();
+      //  window.location.reload();
   }
 
   public delete(id: number,) {
